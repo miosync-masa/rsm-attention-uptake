@@ -1,22 +1,22 @@
-# Attention as Pre-Grammatical Selection Pressure
+# Responsive Input and Productive Stabilization
 
-**A cross-linguistic test of the Reactive Schematization Model (RSM)**
+**Cross-linguistic evidence for the Reactive Schematization Model (RSM)**
 
 This repository contains the analysis pipeline, theoretical documents, and
-aggregated results for the paper:
+aggregated results for the manuscript:
 
-> *Attention as Pre-Grammatical Selection Pressure: A Cross-Linguistic Test of
+> *Responsive Input and Productive Stabilization: Cross-Linguistic Evidence for
 > the Reactive Schematization Model*
-> Masamichi Iizumi & Torami (Miosync, Inc.)
-> ORCID [0009-0007-0755-403X](https://orcid.org/0009-0007-0755-403X)
+> Author(s) omitted for anonymous peer review.
 
-The study quantifies caregiver **attention bias** across eight CHILDES samples
-(seven languages plus an American/British English dialect pair) and tests
-whether the *attention × frequency* interaction predicts children's grammatical
-uptake. The central empirical finding is a **two-phase dissociation**:
-initial cue *emergence* is frequency-driven and cross-linguistically
-heterogeneous, while *entrenchment* to peak production is driven by the
-attention × frequency interaction and is cross-linguistically homogeneous.
+The study quantifies caregiver **cue orienting potential** across eight CHILDES
+samples (seven languages plus an American/British English dialect pair) and
+tests whether the *cue-orienting × frequency* interaction predicts children's
+grammatical uptake. The central empirical finding is a **two-phase
+dissociation**: initial cue *emergence* is frequency-driven and
+cross-linguistically heterogeneous, while *stabilization* to peak production is
+driven by the cue-orienting × frequency interaction and is cross-linguistically
+homogeneous.
 
 ---
 
@@ -24,12 +24,12 @@ attention × frequency interaction and is cross-linguistically homogeneous.
 
 | Outcome | Pooled interaction beta | z | p | I-squared | Sign test |
 |---|---:|---:|---:|---:|---:|
-| **Peak production** (entrenchment) | **+0.45** [+0.38, +0.53] | 12.1 | <.00001 | 23.6% (homogeneous) | **8/8** (p=.004) |
+| **Peak production** (stabilization) | **+0.45** [+0.38, +0.53] | 12.1 | <.00001 | 23.6% (homogeneous) | **8/8** (p=.004) |
 | First emergence (registration) | +0.07 [-0.08, +0.22] | 0.96 | .34 (ns) | 70.1% (heterogeneous) | 5/8 (ns) |
 
-The interaction adds **~13.7x more variance** to peak production than attention
-as a main effect (mean delta-R-squared 0.179 vs 0.013). See
-`docs/supplemental_material_v1.md` for the full statistics.
+The interaction adds **~13.7x more variance** to peak production than cue
+orienting as a main effect (mean delta-R-squared 0.179 vs 0.013). See
+`docs/supplemental_material.md` for the full statistics.
 
 ---
 
@@ -39,17 +39,17 @@ as a main effect (mean delta-R-squared 0.179 vs 0.013). See
 .
 ├── 01_load_corpus_json.py            # CHILDES CHA -> JSON -> standardized token CSV
 ├── 02_extract_cues_v2.py             # per-language grammatical cue tagging
-├── 03_compute_attention_index_v3.py  # 5-dim Attention Index + non-circular Reliability
+├── 03_compute_attention_index_v3.py  # 5-dim Cue Orienting Index + non-circular Reliability
 ├── 05_developmental_uptake.py        # child uptake measures + hierarchical regressions
 ├── 06_meta_analysis.py               # random-effects meta-analysis across samples
 ├── 04_visualize_results_v3.py        # publication figures (forest, two-phase, dR2)
 │
 ├── docs/                             # theory + write-up
-│   ├── reactive_schematization_model_v1.md   # RSM theoretical framework
-│   ├── attention_index_formalization_v1.md   # AI mathematical definition
-│   ├── cue_candidates_v1.md                  # per-language cue inventory
-│   ├── discussion_tourist_phenomenon_v1.md   # Discussion extension
-│   └── supplemental_material_v1.md           # full results tables (8 samples)
+│   ├── reactive_schematization_model.md      # RSM theoretical framework
+│   ├── attention_index_formalization.md      # COI mathematical definition
+│   ├── cue_candidates.md                     # per-language cue inventory
+│   ├── discussion_tourist_phenomenon.md      # Discussion extension
+│   └── supplemental_material.md              # full results tables (8 samples)
 │
 ├── results/                         # AGGREGATED outputs only (safe to share)
 │   ├── {sample}_attention_index.csv
@@ -65,6 +65,12 @@ as a main effect (mean delta-R-squared 0.179 vs 0.013). See
 ├── LICENSE                          # MIT (code + aggregated results)
 └── .gitignore
 ```
+
+> **Naming note.** Several script and output filenames retain the string
+> `attention_index` for internal consistency with earlier development versions.
+> The construct these files compute is the **Cue Orienting Index (COI)** as
+> defined in the manuscript and in `docs/attention_index_formalization.md`;
+> the two names refer to the same quantity.
 
 > **Note on data.** This repository does **not** redistribute any CHILDES /
 > TalkBank source material. Only **aggregated, cue-level statistics** (from
@@ -94,8 +100,8 @@ as a main effect (mean delta-R-squared 0.179 vs 0.013). See
 ### 1. Environment
 
 ```bash
-python -m venv imt_env
-source imt_env/bin/activate          # Windows: imt_env\Scripts\activate
+python -m venv rsm_env
+source rsm_env/bin/activate          # Windows: rsm_env\Scripts\activate
 pip install pandas numpy scipy statsmodels matplotlib tqdm
 ```
 
@@ -126,7 +132,7 @@ for lang in English English-UK Japanese Korean Mandarin Russian Spanish Indonesi
     python 02_extract_cues_v2.py        --tokens_csv ./output/${lang}_tokens.csv               --language ${lang} --output_dir ./output/v2/
     python 03_compute_attention_index_v3.py --tagged_csv ./output/v2/${lang}_tokens_tagged.csv --language ${lang} --output_dir ./output/v3/
     python 05_developmental_uptake.py   --tagged_csv ./output/v2/${lang}_tokens_tagged.csv \
-                                        --ai_csv ./output/v3/${lang}_attention_index.csv       --language ${lang} --output_dir ./output/v3/
+                                        --coi_csv ./output/v3/${lang}_attention_index.csv      --language ${lang} --output_dir ./output/v3/
 done
 
 python 06_meta_analysis.py --output_dir ./output/v3/ \
@@ -141,26 +147,28 @@ and `output/json_cache/` are TalkBank-derived and are **git-ignored**.)
 
 ---
 
-## The Attention Index (AI)
+## The Cue Orienting Index (COI)
 
-For each grammatical cue *c* in language *L*, the AI is the unweighted mean of
+For each grammatical cue *c* in language *L*, the COI is the unweighted mean of
 five salience dimensions, with **cross-linguistically fixed weights** (the
 constraint that makes the model falsifiable):
 
 ```
-AI(c, L) = 0.2*S_acoustic + 0.2*S_positional + 0.2*S_frequency
-         + 0.2*S_repetition + 0.2*S_perceptual
+COI(c, L) = 0.2*S_acoustic + 0.2*S_positional + 0.2*S_frequency
+          + 0.2*S_repetition + 0.2*S_perceptual
 ```
 
-`Reliability` (how informative a cue is, once attended) is a **separate**
-companion variable, reported in three non-circular forms (`gra`, `position`,
-`form`). Full definitions: `docs/attention_index_formalization_v1.md`.
+COI estimates the *orienting potential* of a cue from caregiver corpus
+statistics; it is a property of the input signal, not a direct measure of child
+attentional behavior. `Reliability` (how informative a cue is, once attended) is
+a **separate** companion variable, reported in three non-circular forms (`gra`,
+`position`, `form`). Full definitions: `docs/attention_index_formalization.md`.
 
 ---
 
 ## The Reactive Schematization Model (RSM)
 
-The empirical pipeline tests a theoretical proposal that the infant is not
+The empirical pipeline tests a theoretical proposal that the learner is not
 primarily *acquiring grammar* but *seeking communicative success*, with grammar
 emerging as the sedimented residue of response-confirmed signaling patterns:
 
@@ -168,24 +176,17 @@ emerging as the sedimented residue of response-confirmed signaling patterns:
 I -> A -> O -> R -> B -> schema -> next-generation O
 ```
 
-(Input -> Attention -> Output -> Response -> Book -> schema.) The two-phase
+(Input -> Attention -> Output -> Response -> store -> schema.) The two-phase
 dissociation reported here is the model's predicted signature: frequency drives
-what enters the **Book**; the attention x frequency product drives what
-**entrenches** into a schema. See `docs/reactive_schematization_model_v1.md`.
+what enters the store; the cue-orienting × frequency product drives what
+**stabilizes** into a schema. See `docs/reactive_schematization_model.md`.
 
 ---
 
 ## Citation
 
-```bibtex
-@unpublished{iizumi_attention_2026,
-  author = {Iizumi, Masamichi and Torami},
-  title  = {Attention as Pre-Grammatical Selection Pressure:
-            A Cross-Linguistic Test of the Reactive Schematization Model},
-  year   = {2026},
-  note   = {Manuscript. ORCID 0009-0007-0755-403X}
-}
-```
+> Citation details omitted for anonymous peer review. A full reference,
+> including authorship and DOI, will be restored on acceptance.
 
 If you use the corpora themselves, please also cite CHILDES
 (MacWhinney, 2000) and the individual corpus contributors.
