@@ -375,12 +375,23 @@ def fig_two_phase(peak_df: pd.DataFrame, emrg_df: pd.DataFrame,
 def _extract_delta_r2(uptake: dict) -> Optional[Dict[str, float]]:
     """Pull ΔR²(AI alone) and ΔR²(interaction) for peak from an uptake summary.
 
-    Defends against schema drift in 05's JSON output.
+    05 nests the regression blocks under a "regressions" key:
+        uptake["regressions"]["peak_rate_per_1k"]["deltaR2_AI" | "deltaR2_interaction"]
+    We also accept a flat layout for robustness against schema drift.
     """
+    # Prefer the nested "regressions" container if present.
+    search_roots = []
+    if isinstance(uptake.get("regressions"), dict):
+        search_roots.append(uptake["regressions"])
+    search_roots.append(uptake)   # fall back to top level
+
     block = None
-    for key in ("peak_rate_per_1k", "peak", "peak_production"):
-        if key in uptake:
-            block = uptake[key]
+    for root in search_roots:
+        for key in ("peak_rate_per_1k", "peak", "peak_production"):
+            if key in root:
+                block = root[key]
+                break
+        if block is not None:
             break
     if block is None:
         # maybe summary is flat
