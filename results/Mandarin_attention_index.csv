@@ -1,0 +1,12 @@
+cue_subtype,cue_type,cue_form,count,S_acoustic,S_positional,S_frequency_zscore,S_frequency_normalized,S_repetition,S_perceptual,AttentionIndex,WeightedAttentionIndex,Reliability_gra,Reliability_gra_is_circular,Reliability_position,Reliability_form,Reliability_composite_noncircular,FunctionEntropy_gra,PositionConsistency,dominant_gra_relation,n_distinct_gra_relations,pos_mean,pos_std,n_distinct_functions,most_common_function
+object_position,word_order,什么,27277,0.498,0.4037,1.3218,0.7895,1.0,1.0,0.7382,0.6941,1.0,True,0.0,0.4969,0.2485,0.0,0.2227,OBJ,1,0.8166,0.2247,1,patient
+le,aspect_le,了,10664,0.698,0.6019,0.7974,0.6894,1.0,0.5,0.6979,0.5958,0.6789,False,0.0,0.9819,0.4909,0.3276,0.2272,DISCOURSE,22,0.8742,0.2233,1,perfective_or_change
+subject_position,word_order,你,52229,0.0107,0.4743,1.6845,0.8435,1.0,0.5,0.5657,0.5657,1.0,True,0.62,0.6885,0.6542,0.0,0.1536,NSUBJ,1,0.1767,0.2446,1,agent
+de_mod,particle_de,的,10164,0.3338,0.2431,0.7705,0.6836,1.0,0.5,0.5521,0.4689,0.3576,False,0.0,0.0017,0.0008,0.4392,0.0614,CASE,31,0.7116,0.2713,1,modifier_link
+gei,preposition_gei,给,3606,0.0141,0.0448,0.1919,0.5478,0.8907,0.5,0.3995,0.3012,0.425,False,0.0,0.9157,0.4578,0.5041,0.1266,ADVCL,24,0.4155,0.2524,1,recipient
+ba,construction_ba,把,2186,0.0101,0.1351,-0.0876,0.4781,0.9355,0.5,0.4118,0.2915,0.895,False,0.0,0.9285,0.4643,0.1949,0.2795,CASE,20,0.2586,0.2082,1,object_disposal
+zhe,aspect_zhe,着,872,0.1915,0.0961,-0.6007,0.3542,0.8296,0.5,0.3943,0.2458,0.9132,False,0.0,0.9403,0.4701,0.1699,0.113,AUX,11,0.6211,0.2563,1,progressive
+guo,aspect_guo,过,582,0.2182,0.1199,-0.8265,0.3044,0.6886,0.5,0.3662,0.2147,0.7486,False,0.0,0.957,0.4785,0.355,0.0478,AUX,18,0.6498,0.2752,1,experiential
+de_comp,particle_de,得,996,0.0462,-0.0458,-0.5265,0.3713,0.7882,0.5,0.332,0.211,0.8181,False,0.0,0.9145,0.4572,0.2521,0.2494,COMPOUND-EXT,17,0.5764,0.2169,1,verb_complement
+de_adv,particle_de,地,338,0.068,-0.0083,-1.1299,0.2442,0.5196,0.5,0.2647,0.142,0.3201,False,0.0,0.926,0.463,0.6388,0.0424,MARK-ADV,20,0.561,0.2768,1,adverbializer
+bei,construction_bei,被,147,0.0068,0.1313,-1.5948,0.1687,0.3487,0.5,0.2311,0.1063,0.9781,False,0.0,0.9796,0.4898,0.0933,0.1338,AUX-PASS,4,0.3224,0.2503,1,passive

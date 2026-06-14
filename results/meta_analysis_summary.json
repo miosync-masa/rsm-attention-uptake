@@ -1,0 +1,289 @@
+{
+  "languages": [
+    "English",
+    "English-UK",
+    "Japanese",
+    "Korean",
+    "Mandarin",
+    "Russian",
+    "Spanish",
+    "Indonesian"
+  ],
+  "outcomes_analyzed": [
+    "peak_rate_per_1k",
+    "first_emergence_month"
+  ],
+  "results": {
+    "peak_rate_per_1k": {
+      "per_language": [
+        {
+          "language": "English",
+          "n_cues": 107,
+          "interaction_beta": 0.4488,
+          "interaction_se": 0.07033292448228641,
+          "interaction_p": 0.0,
+          "deltaR2_interaction": 0.201,
+          "deltaR2_AI": 0.0014,
+          "semipartial_AI": 0.0371,
+          "semipartial_logFreq": 0.4194,
+          "M0_freq_only_R2": 0.3011,
+          "M2_full_R2": 0.5035
+        },
+        {
+          "language": "English-UK",
+          "n_cues": 138,
+          "interaction_beta": 0.3743,
+          "interaction_se": 0.0765830392803133,
+          "interaction_p": 0.0,
+          "deltaR2_interaction": 0.111,
+          "deltaR2_AI": 0.0173,
+          "semipartial_AI": 0.1314,
+          "semipartial_logFreq": 0.4524,
+          "M0_freq_only_R2": 0.2601,
+          "M2_full_R2": 0.3884
+        },
+        {
+          "language": "Japanese",
+          "n_cues": 55,
+          "interaction_beta": 0.3462,
+          "interaction_se": 0.07061354188138148,
+          "interaction_p": 1e-05,
+          "deltaR2_interaction": 0.1069,
+          "deltaR2_AI": 0.0106,
+          "semipartial_AI": 0.1027,
+          "semipartial_logFreq": 0.5493,
+          "M0_freq_only_R2": 0.6663,
+          "M2_full_R2": 0.7838
+        },
+        {
+          "language": "Korean",
+          "n_cues": 23,
+          "interaction_beta": 0.4828,
+          "interaction_se": 0.13168609219353009,
+          "interaction_p": 0.00093,
+          "deltaR2_interaction": 0.2745,
+          "deltaR2_AI": 0.0017,
+          "semipartial_AI": 0.041,
+          "semipartial_logFreq": 0.5102,
+          "M0_freq_only_R2": 0.3836,
+          "M2_full_R2": 0.6598
+        },
+        {
+          "language": "Mandarin",
+          "n_cues": 11,
+          "interaction_beta": 0.5687,
+          "interaction_se": 0.20587112824521264,
+          "interaction_p": 0.01254,
+          "deltaR2_interaction": 0.1756,
+          "deltaR2_AI": 0.0427,
+          "semipartial_AI": 0.2067,
+          "semipartial_logFreq": 0.5485,
+          "M0_freq_only_R2": 0.671,
+          "M2_full_R2": 0.8893
+        },
+        {
+          "language": "Russian",
+          "n_cues": 22,
+          "interaction_beta": 0.6696,
+          "interaction_se": 0.0926802737193132,
+          "interaction_p": 0.0,
+          "deltaR2_interaction": 0.2607,
+          "deltaR2_AI": 0.0235,
+          "semipartial_AI": 0.1534,
+          "semipartial_logFreq": 0.4704,
+          "M0_freq_only_R2": 0.6375,
+          "M2_full_R2": 0.9218
+        },
+        {
+          "language": "Spanish",
+          "n_cues": 67,
+          "interaction_beta": 0.457,
+          "interaction_se": 0.07839429703810886,
+          "interaction_p": 0.0,
+          "deltaR2_interaction": 0.1571,
+          "deltaR2_AI": 0.0005,
+          "semipartial_AI": 0.0226,
+          "semipartial_logFreq": 0.6031,
+          "M0_freq_only_R2": 0.5621,
+          "M2_full_R2": 0.7197
+        },
+        {
+          "language": "Indonesian",
+          "n_cues": 27,
+          "interaction_beta": 0.4622,
+          "interaction_se": 0.12849725811290413,
+          "interaction_p": 0.00093,
+          "deltaR2_interaction": 0.1477,
+          "deltaR2_AI": 0.007,
+          "semipartial_AI": 0.0838,
+          "semipartial_logFreq": 0.5544,
+          "M0_freq_only_R2": 0.6095,
+          "M2_full_R2": 0.7643
+        }
+      ],
+      "sign_test": {
+        "n_languages": 8,
+        "n_positive": 8,
+        "n_negative": 0,
+        "direction_expected": "positive",
+        "binomial_p_onesided": 0.00391
+      },
+      "random_effects_meta": {
+        "k_languages": 8,
+        "pooled_beta_random": 0.4536,
+        "pooled_se": 0.0375,
+        "ci_low": 0.3801,
+        "ci_high": 0.527,
+        "z": 12.1026,
+        "p_value": 0.0,
+        "tau2": 0.0026,
+        "Q": 9.1605,
+        "Q_df": 7,
+        "Q_p": 0.24134,
+        "I2_percent": 23.6,
+        "pooled_beta_fixed": 0.4482
+      },
+      "deltaR2_interaction_mean": 0.17931249999999999,
+      "deltaR2_AI_mean": 0.013087500000000002
+    },
+    "first_emergence_month": {
+      "per_language": [
+        {
+          "language": "English",
+          "n_cues": 107,
+          "interaction_beta": 0.1443,
+          "interaction_se": 0.07910859587216908,
+          "interaction_p": 0.06786,
+          "deltaR2_interaction": 0.0208,
+          "deltaR2_AI": 0.0,
+          "semipartial_AI": 0.0036,
+          "semipartial_logFreq": 0.4274,
+          "M0_freq_only_R2": 0.3511,
+          "M2_full_R2": 0.3719
+        },
+        {
+          "language": "English-UK",
+          "n_cues": 138,
+          "interaction_beta": -0.0495,
+          "interaction_se": 0.057577588159782526,
+          "interaction_p": 0.38727,
+          "deltaR2_interaction": 0.0019,
+          "deltaR2_AI": 0.0022,
+          "semipartial_AI": 0.0471,
+          "semipartial_logFreq": 0.5341,
+          "M0_freq_only_R2": 0.65,
+          "M2_full_R2": 0.6542
+        },
+        {
+          "language": "Japanese",
+          "n_cues": 55,
+          "interaction_beta": 0.2355,
+          "interaction_se": 0.10035898618546055,
+          "interaction_p": 0.0199,
+          "deltaR2_interaction": 0.0495,
+          "deltaR2_AI": 0.059,
+          "semipartial_AI": 0.2429,
+          "semipartial_logFreq": 0.3503,
+          "M0_freq_only_R2": 0.4549,
+          "M2_full_R2": 0.5633
+        },
+        {
+          "language": "Korean",
+          "n_cues": 23,
+          "interaction_beta": -0.2767,
+          "interaction_se": 0.1097214030461784,
+          "interaction_p": 0.0144,
+          "deltaR2_interaction": 0.0902,
+          "deltaR2_AI": 0.0139,
+          "semipartial_AI": 0.118,
+          "semipartial_logFreq": 0.6361,
+          "M0_freq_only_R2": 0.6597,
+          "M2_full_R2": 0.7638
+        },
+        {
+          "language": "Mandarin",
+          "n_cues": 11,
+          "interaction_beta": -0.3573,
+          "interaction_se": 0.47289133882050893,
+          "interaction_p": 0.39238,
+          "deltaR2_interaction": 0.0693,
+          "deltaR2_AI": 0.0554,
+          "semipartial_AI": 0.2353,
+          "semipartial_logFreq": 0.0285,
+          "M0_freq_only_R2": 0.2914,
+          "M2_full_R2": 0.416
+        },
+        {
+          "language": "Russian",
+          "n_cues": 22,
+          "interaction_beta": 0.1009,
+          "interaction_se": 0.20977426115989886,
+          "interaction_p": 0.61257,
+          "deltaR2_interaction": 0.0059,
+          "deltaR2_AI": 0.0,
+          "semipartial_AI": 0.0049,
+          "semipartial_logFreq": 0.3146,
+          "M0_freq_only_R2": 0.5932,
+          "M2_full_R2": 0.5991
+        },
+        {
+          "language": "Spanish",
+          "n_cues": 67,
+          "interaction_beta": 0.2916,
+          "interaction_se": 0.10403252304634167,
+          "interaction_p": 0.00578,
+          "deltaR2_interaction": 0.064,
+          "deltaR2_AI": 0.0852,
+          "semipartial_AI": 0.2919,
+          "semipartial_logFreq": 0.2891,
+          "M0_freq_only_R2": 0.3571,
+          "M2_full_R2": 0.5063
+        },
+        {
+          "language": "Indonesian",
+          "n_cues": 27,
+          "interaction_beta": 0.1819,
+          "interaction_se": 0.17786040968099412,
+          "interaction_p": 0.29162,
+          "deltaR2_interaction": 0.0229,
+          "deltaR2_AI": 0.0079,
+          "semipartial_AI": 0.0888,
+          "semipartial_logFreq": 0.3813,
+          "M0_freq_only_R2": 0.5174,
+          "M2_full_R2": 0.5482
+        }
+      ],
+      "sign_test": {
+        "n_languages": 8,
+        "n_positive": 5,
+        "n_negative": 3,
+        "direction_expected": "positive",
+        "binomial_p_onesided": 0.36328
+      },
+      "random_effects_meta": {
+        "k_languages": 8,
+        "pooled_beta_random": 0.0721,
+        "pooled_se": 0.0749,
+        "ci_low": -0.0746,
+        "ci_high": 0.2188,
+        "z": 0.9634,
+        "p_value": 0.335327,
+        "tau2": 0.0267,
+        "Q": 23.4276,
+        "Q_df": 7,
+        "Q_p": 0.00144,
+        "I2_percent": 70.1,
+        "pooled_beta_fixed": 0.0527
+      },
+      "deltaR2_interaction_mean": 0.0405625,
+      "deltaR2_AI_mean": 0.027949999999999996
+    }
+  },
+  "caveats": [
+    "Production data, not comprehension; uptake timing is an upper bound.",
+    "Caregiver AI and child uptake from the same corpus; needs held-out replication.",
+    "Frequency proxies reactive repetition (R+); direct response-coding pending.",
+    "First-emergence is sampling-sensitive; peak/slope are more stable.",
+    "Korean/Mandarin/Russian have small n; down-weighted via SE in meta."
+  ]
+}

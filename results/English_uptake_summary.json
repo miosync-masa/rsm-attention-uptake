@@ -1,0 +1,151 @@
+{
+  "language": "English",
+  "n_child_tokens": 287496,
+  "n_child_tokens_aged": 287056,
+  "age_bins_months": [
+    18,
+    21,
+    24,
+    27,
+    30,
+    33,
+    36,
+    39,
+    42,
+    45,
+    48,
+    51,
+    54,
+    57,
+    60
+  ],
+  "bin_width_months": 3,
+  "n_cues_matched": 107,
+  "correlations": {
+    "AI_vs_emergence": {
+      "n": 107,
+      "pearson_r": -0.4104,
+      "pearson_p": 1e-05,
+      "spearman_r": -0.4832,
+      "spearman_p": 0.0
+    },
+    "AI_vs_uptake_slope": {
+      "n": 107,
+      "pearson_r": 0.2839,
+      "pearson_p": 0.00304,
+      "spearman_r": 0.4789,
+      "spearman_p": 0.0
+    },
+    "AI_vs_peak_rate": {
+      "n": 107,
+      "pearson_r": 0.3558,
+      "pearson_p": 0.00017,
+      "spearman_r": 0.6447,
+      "spearman_p": 0.0
+    },
+    "logFreq_vs_emergence": {
+      "n": 107,
+      "pearson_r": -0.5926,
+      "pearson_p": 0.0,
+      "spearman_r": -0.7166,
+      "spearman_p": 0.0
+    },
+    "logFreq_vs_peak_rate": {
+      "n": 107,
+      "pearson_r": 0.5488,
+      "pearson_p": 0.0,
+      "spearman_r": 0.9131,
+      "spearman_p": 0.0
+    },
+    "WAI_vs_emergence": {
+      "n": 107,
+      "pearson_r": -0.5245,
+      "pearson_p": 0.0,
+      "spearman_r": -0.6719,
+      "spearman_p": 0.0
+    },
+    "WAI_vs_peak_rate": {
+      "n": 107,
+      "pearson_r": 0.5818,
+      "pearson_p": 0.0,
+      "spearman_r": 0.8595,
+      "spearman_p": 0.0
+    },
+    "Reliability_position_vs_emergence": {
+      "n": 107,
+      "pearson_r": -0.0456,
+      "pearson_p": 0.64073,
+      "spearman_r": 0.025,
+      "spearman_p": 0.79847
+    },
+    "Reliability_form_vs_emergence": {
+      "n": 107,
+      "pearson_r": 0.0219,
+      "pearson_p": 0.82267,
+      "spearman_r": 0.125,
+      "spearman_p": 0.19968
+    }
+  },
+  "regressions": {
+    "peak_rate_per_1k": {
+      "outcome": "peak_rate_per_1k",
+      "n": 107,
+      "M0_freq_only_R2": 0.3011,
+      "M1_freq_AI_R2": 0.3025,
+      "M2_full_R2": 0.5035,
+      "deltaR2_AI": 0.0014,
+      "deltaR2_interaction": 0.201,
+      "beta_AI": {
+        "beta": -0.0517,
+        "p": 0.65143,
+        "ci_low": -0.2782,
+        "ci_high": 0.1747
+      },
+      "beta_logFreq": {
+        "beta": 0.5848,
+        "p": 0.0,
+        "ci_low": 0.3584,
+        "ci_high": 0.8113
+      },
+      "beta_interaction": {
+        "beta": 0.4488,
+        "p": 0.0,
+        "ci_low": 0.311,
+        "ci_high": 0.5867
+      },
+      "semipartial_AI_r": 0.0371,
+      "semipartial_logFreq_r": 0.4194,
+      "interaction_sign": "positive"
+    },
+    "first_emergence_month": {
+      "outcome": "first_emergence_month",
+      "n": 107,
+      "M0_freq_only_R2": 0.3511,
+      "M1_freq_AI_R2": 0.3511,
+      "M2_full_R2": 0.3719,
+      "deltaR2_AI": 0.0,
+      "deltaR2_interaction": 0.0208,
+      "beta_AI": {
+        "beta": 0.005,
+        "p": 0.96383,
+        "ci_low": -0.2134,
+        "ci_high": 0.2234
+      },
+      "beta_logFreq": {
+        "beta": -0.596,
+        "p": 0.0,
+        "ci_low": -0.8145,
+        "ci_high": -0.3776
+      },
+      "beta_interaction": {
+        "beta": 0.1443,
+        "p": 0.06786,
+        "ci_low": -0.0108,
+        "ci_high": 0.2993
+      },
+      "semipartial_AI_r": 0.0036,
+      "semipartial_logFreq_r": 0.4274,
+      "interaction_sign": "positive"
+    }
+  }
+}

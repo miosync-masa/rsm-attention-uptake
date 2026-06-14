@@ -1,0 +1,66 @@
+# ============================================================================
+#  IMT Attention Bias — .gitignore
+#  CRITICAL: keep ALL TalkBank/CHILDES-derived material out of the repo.
+#  Only aggregated, non-reconstructable statistics belong in results/.
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+#  Raw / intermediate corpus data (TalkBank-derived — NEVER commit)
+# ----------------------------------------------------------------------------
+# Local copies of the corpora
+childes_data/
+*.cha
+*.cdc
+
+# Stage-01 outputs: token / utterance tables contain reconstructable text
+output/*_tokens.csv
+output/*_utterances.csv
+output/*_summary.json
+output/json_cache/
+
+# Stage-02 outputs: tagged token tables also contain reconstructable text
+output/v2/
+
+# Anything else under output/ that is not the curated v3 aggregates.
+# (We publish a hand-curated copy as results/ instead of committing output/v3
+#  directly, so ignore the whole working output tree by default.)
+output/
+
+# If you prefer to track output/v3 directly, comment the line above and
+# un-ignore the safe aggregates explicitly:
+# !output/v3/
+# !output/v3/*_attention_index.csv
+# !output/v3/*_uptake.csv
+# !output/v3/*_uptake_by_age.csv
+# !output/v3/*_uptake_summary.json
+# !output/v3/meta_effects_*.csv
+# !output/v3/meta_analysis_summary.json
+# !output/v3/figures/
+
+# ----------------------------------------------------------------------------
+#  Diagnostics scratch (may quote raw utterances)
+# ----------------------------------------------------------------------------
+diag_*.txt
+diagnostic_*.txt
+
+# ----------------------------------------------------------------------------
+#  Python environment / caches
+# ----------------------------------------------------------------------------
+imt_env/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# ----------------------------------------------------------------------------
+#  OS / editor cruft
+# ----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/

@@ -1,0 +1,144 @@
+{
+  "language": "Japanese",
+  "n_child_tokens": 181123,
+  "n_child_tokens_aged": 181123,
+  "age_bins_months": [
+    15,
+    18,
+    21,
+    24,
+    27,
+    30,
+    33,
+    36
+  ],
+  "bin_width_months": 3,
+  "n_cues_matched": 55,
+  "correlations": {
+    "AI_vs_emergence": {
+      "n": 55,
+      "pearson_r": -0.6254,
+      "pearson_p": 0.0,
+      "spearman_r": -0.6212,
+      "spearman_p": 0.0
+    },
+    "AI_vs_uptake_slope": {
+      "n": 55,
+      "pearson_r": 0.3701,
+      "pearson_p": 0.00542,
+      "spearman_r": 0.2517,
+      "spearman_p": 0.06377
+    },
+    "AI_vs_peak_rate": {
+      "n": 55,
+      "pearson_r": 0.6125,
+      "pearson_p": 0.0,
+      "spearman_r": 0.625,
+      "spearman_p": 0.0
+    },
+    "logFreq_vs_emergence": {
+      "n": 55,
+      "pearson_r": -0.6744,
+      "pearson_p": 0.0,
+      "spearman_r": -0.6827,
+      "spearman_p": 0.0
+    },
+    "logFreq_vs_peak_rate": {
+      "n": 55,
+      "pearson_r": 0.8163,
+      "pearson_p": 0.0,
+      "spearman_r": 0.8963,
+      "spearman_p": 0.0
+    },
+    "WAI_vs_emergence": {
+      "n": 55,
+      "pearson_r": -0.6485,
+      "pearson_p": 0.0,
+      "spearman_r": -0.72,
+      "spearman_p": 0.0
+    },
+    "WAI_vs_peak_rate": {
+      "n": 55,
+      "pearson_r": 0.8441,
+      "pearson_p": 0.0,
+      "spearman_r": 0.8612,
+      "spearman_p": 0.0
+    },
+    "Reliability_position_vs_emergence": {
+      "n": 55,
+      "pearson_r": -0.1017,
+      "pearson_p": 0.45984,
+      "spearman_r": -0.097,
+      "spearman_p": 0.48101
+    },
+    "Reliability_form_vs_emergence": {
+      "n": 55,
+      "pearson_r": -0.1225,
+      "pearson_p": 0.37304,
+      "spearman_r": -0.001,
+      "spearman_p": 0.9945
+    }
+  },
+  "regressions": {
+    "peak_rate_per_1k": {
+      "outcome": "peak_rate_per_1k",
+      "n": 55,
+      "M0_freq_only_R2": 0.6663,
+      "M1_freq_AI_R2": 0.6769,
+      "M2_full_R2": 0.7838,
+      "deltaR2_AI": 0.0106,
+      "deltaR2_interaction": 0.1069,
+      "beta_AI": {
+        "beta": 0.136,
+        "p": 0.19827,
+        "ci_low": -0.0734,
+        "ci_high": 0.3454
+      },
+      "beta_logFreq": {
+        "beta": 0.7272,
+        "p": 0.0,
+        "ci_low": 0.5178,
+        "ci_high": 0.9366
+      },
+      "beta_interaction": {
+        "beta": 0.3462,
+        "p": 1e-05,
+        "ci_low": 0.2078,
+        "ci_high": 0.4846
+      },
+      "semipartial_AI_r": 0.1027,
+      "semipartial_logFreq_r": 0.5493,
+      "interaction_sign": "positive"
+    },
+    "first_emergence_month": {
+      "outcome": "first_emergence_month",
+      "n": 55,
+      "M0_freq_only_R2": 0.4549,
+      "M1_freq_AI_R2": 0.5138,
+      "M2_full_R2": 0.5633,
+      "deltaR2_AI": 0.059,
+      "deltaR2_interaction": 0.0495,
+      "beta_AI": {
+        "beta": -0.3215,
+        "p": 0.01516,
+        "ci_low": -0.5784,
+        "ci_high": -0.0646
+      },
+      "beta_logFreq": {
+        "beta": -0.4638,
+        "p": 0.00066,
+        "ci_low": -0.7206,
+        "ci_high": -0.2069
+      },
+      "beta_interaction": {
+        "beta": 0.2355,
+        "p": 0.0199,
+        "ci_low": 0.0388,
+        "ci_high": 0.4322
+      },
+      "semipartial_AI_r": 0.2429,
+      "semipartial_logFreq_r": 0.3503,
+      "interaction_sign": "positive"
+    }
+  }
+}
