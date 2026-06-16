@@ -43,6 +43,10 @@ orienting as a main effect (mean delta-R-squared 0.179 vs 0.013). See
 ├── 05_developmental_uptake.py        # child uptake measures + hierarchical regressions
 ├── 06_meta_analysis.py               # random-effects meta-analysis across samples
 ├── 04_visualize_results_v3.py        # publication figures (forest, two-phase, dR2)
+├── 07_temporal_structure.py          # caregiver cue temporal structure (span/dispersion/
+│                                     #   persistence/burstiness), frequency-orthogonalized
+├── 08_temporal_meta.py               # meta-analysis of temporal-structure x frequency
+├── 09_temporal_diagnostics.py        # separability + recording-density confound diagnostics
 │
 ├── docs/                             # theory + write-up
 │   ├── reactive_schematization_model.md      # RSM theoretical framework
@@ -140,6 +144,34 @@ python 06_meta_analysis.py --output_dir ./output/v3/ \
 
 python 04_visualize_results_v3.py --output_dir ./output/v3/
 ```
+
+### 4. (Optional) Temporal-structure separability probe
+
+This auxiliary analysis (SI §S6) tests whether caregiver-cue temporal
+distribution can be measured independently of token frequency. It recovers a
+developmental age axis for caregiver utterances by file-level inheritance (CHILDES
+marks age only on the target child), then computes frequency-orthogonalized
+span/dispersion/persistence/burstiness and checks them against recording-density
+confounds.
+
+```bash
+for lang in English English-UK Japanese Korean Mandarin Russian Spanish Indonesian; do
+    python 07_temporal_structure.py --tagged_csv ./output/v2/${lang}_tokens_tagged.csv \
+                                    --uptake_csv ./results/${lang}_uptake.csv \
+                                    --language ${lang} --output_dir ./output/v3/ --bin_width 3
+done
+
+python 08_temporal_meta.py        --output_dir ./output/v3/ \
+    --languages English English-UK Japanese Korean Mandarin Russian Spanish Indonesian
+
+python 09_temporal_diagnostics.py --output_dir ./output/v3/ --results_dir ./results/ \
+    --languages English English-UK Japanese Korean Mandarin Russian Spanish Indonesian
+```
+
+The probe's conclusion is reported in SI §S6: temporal structure is *separable*
+from frequency at the level of measurement, but its *independent* effect on
+stabilization is confounded with recording density and is left to future
+time-resolved corpora.
 
 The aggregated CSV/JSON written to `output/v3/` corresponds to what is committed
 under `results/`. (Intermediate `output/*_tokens.csv`, `output/v2/*_tagged.csv`,
