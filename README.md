@@ -179,6 +179,194 @@ and `output/json_cache/` are TalkBank-derived and are **git-ignored**.)
 
 ---
 
+## Paper 2 (exposure-gate extension)
+
+> **Branch.** All Paper 2 material — additional scripts, intermediate evidence
+> files, and the meta-analytic stack — lives on the
+> [`paper2-exposure-gate`](https://github.com/miosync-masa/rsm-attention-uptake/tree/paper2-exposure-gate)
+> branch. The `main` branch contains only the Paper 1 (RSM) pipeline.
+
+### Hypothesis
+
+Paper 1 establishes that **COI × frequency** predicts cue stabilization. Paper 2
+asks a developmental follow-up: does the **same** interaction become readable on
+*online* cue reuse once the child has accumulated enough exposure to the cue?
+The exposure-gate prediction is:
+
+> Within the post-MSR developmental window (child age ≥ 24 months), the
+> probability that a child reuses a cue *c* in the next *N* utterances is
+> predicted by **COI(c) × cumulative_cue_attempts(child, c, t)**, controlling
+> for short-range autoregression (prior 20-utterance local frequency) and
+> corpus-level cue frequency.
+
+In words: post-MSR, attention amplifies reuse for cues the child has practiced
+more — a time-scale-invariant extension of Paper 1's COI × frequency finding.
+
+### Headline meta-analytic result
+
+Random-effects meta-analysis across **32 children from 5 sub-corpora**
+(Brown, Manchester, UK long-longitudinal {Thomas / Fraser / Helen / Eleanor /
+Nicole}, UK short-observation {Wells-Bristol-style}, NA other longitudinal
+{April}), per-child OLS with cluster-robust SE on cue_subtype:
+
+| Outcome window | n | Pooled β(COI × cumulative_cue_attempts) | SE | p | I² |
+|---|---:|---:|---:|---:|---:|
+| **next 5 utt reuse** | 32 | **+0.024** | 0.008 | **0.002** | 63.4% |
+| **next 10 utt reuse** | 32 | **+0.029** | 0.009 | **0.001** | 39.7% |
+| next 5 utt, drop Manchester | 21 | **+0.036** | 0.011 | **<0.001** | 70.2% |
+| next 10 utt, drop Manchester | 21 | **+0.040** | 0.012 | **0.001** | 52.6% |
+
+* 6 / 32 children individually significant (positive); **0 / 32 significant
+  negative**; 21 / 32 in the positive direction.
+* Egger small-study tests p > 0.15 across all four cells — no funnel asymmetry.
+* Heterogeneity (I²) is concentrated in the **Manchester** sub-corpus
+  (n = 11, β = +0.001 at N=5; β = +0.013 at N=10; I² = 0% within Manchester).
+
+### Manchester null is methodological
+
+A four-section diagnostic stack (17g protocol features; 17h sub-corpus split;
+17i JSON-cache feature diff; 17k raw `.cha` qualitative features) traces the
+Manchester null to a single design choice in the Theakston-lab Manchester
+corpus:
+
+* **88% of sessions** declare `@Situation` as *"playing with toys"* or
+  *"Structured Play"*.
+* **All 11 Manchester children share one stimulus set** — *"Duplo Zoo + basket
+  of food + doll"* — with only 16 minor activity-string variants across
+  374 thirty-minute sessions.
+* **Investigator-mediated interaction** (`pct_INV` = 3.6%) is unique to
+  Manchester among the four sub-corpora.
+* Mother / child speech-share ratio is **1.55** vs Brown's 0.70 and
+  UK_short_obs's 0.73 (mother verbally dominates the structured play).
+* Utterance density is **44 utt / min** vs Brown's 23 utt / min.
+
+The standardized stimulus + investigator-mediated 30-min protocol compresses
+cue-context variability, creating a ceiling on within-cue cumulative attention
+that the Mundlak decomposition cannot disentangle from autoregressive
+vocabulary patterns. Manchester's null is therefore a **methodological
+consequence** of its corpus design, not a counter-example to the exposure-gate
+prediction. The effect generalises across all corpora collected under
+naturalistic conditions.
+
+### Pipeline
+
+The Paper 2 scripts share their inputs with Paper 1 (the tokens, tagged
+tokens, attention index, and uptake CSVs from `01-05`). New stages add R+
+(response-contingent caregiver input) extraction, Mundlak-style
+between/within decomposition, episode-level next-N-reuse outcome, and the
+exposure-gate per-child meta:
+
+| Stage | Script | Role |
+|---|---|---|
+| 10  | `10_extract_R_plus_v2.py` | Episode-level R+ extraction (acknowledgment / repetition / expansion / recast) |
+| 11  | `11_rsm_r_plus_join.py` | Join R+ × Paper 1 COI + uptake; M0 / M1 / M2 hierarchical regression |
+| 12  | `12_rplus_meta_analysis.py` | Cross-language meta of the M2 R+_composite × COI interaction |
+| 13  | `13_robustness_quick.py` | M2 robustness (Cook's d, leverage, bootstrap CI) |
+| 14  | `14_age_stratified_quick.py` | Pre / post-MSR (24 mo) age split for M2 |
+| 15  | `15_within_between_decomposition.py` | Mundlak split: R+_between(c) vs R+_within(c, e) |
+| 16  | `16_episode_outcome_uptake.py` | Per-episode outcome: **next-N child utterance cue reuse** |
+| 17  | `17_robustness_age_post_coi.py` | Frequency-confound gate for **age_post × COI** (SPEC #1) |
+| 17  | `17_within_effect_test.py` | 3-way age × COI × R+_within multilevel logit-LPM (Spec C) |
+| 17b | `17b_exposure_gate_test.py` | **Main exposure-gate model**: COI × cumulative_cue_attempts |
+| 17c | `17c_child_level_slopes.py` | Per-child OLS + random-slope MixedLM + DerSimonian-Laird meta |
+| 17d | `17d_window_width_check.py` | Observation-window moderator of per-child β |
+| 17e | `17e_adequate_window_subset.py` | β stratified by min window threshold (6 / 9 / 12 mo) |
+| 17f | `17f_uk_reverse_simulation.py` | Restrict UK children to Manchester age band (24-36 mo) and refit |
+| 17g | `17g_manchester_diagnostics.py` | UK vs Manchester MLU / density / cue-mix triple check |
+| 17h | `17h_uk_subcorpora_meta.py` | Split UK pool into long- vs short-observation sub-corpora |
+| 17i | `17i_corpus_protocol_diff.py` | Protocol features extracted from the JSON cache |
+| 17j | `17j_na_pool_per_child.py` | NA-Pool Brown extension (April; NewmanRatner shown to be cross-sectional) |
+| 17k | `17k_manchester_qualitative.py` | Raw-`.cha` protocol features (Theakston signature extraction) |
+| 17l | `17l_paper_figures.py` | Forest + funnel + Theakston radar; drop-Manchester sensitivity meta |
+
+### Reproducing the exposure-gate stack
+
+Assuming Paper 1 outputs already exist under `output/v3/` (for `caregiver_AI`
+and `log_cue_freq`) and the appropriate tokens / utterances / tagged CSVs are
+present:
+
+```bash
+# For each sample, build the R+ episode set and the per-cue regression input.
+for lang in English English-Manchester English-UK; do
+    python 10_extract_R_plus_v2.py \
+        --tagged_csv ./output/${lang}_tokens_tagged.csv \
+        --utterances_csv ./output/${lang}_utterances.csv \
+        --lexicon_json ./trans_dict_v2.json \
+        --language ${lang} --output_dir ./output/v10b/
+
+    python 11_rsm_r_plus_join.py \
+        --r_plus_csv  ./output/v10b/${lang}_r_plus_cue_agg.csv \
+        --uptake_csv  ./output/v3/${lang}_uptake.csv \
+        --ai_csv      ./output/${lang}_attention_index.csv \
+        --language ${lang} --output_dir ./output/v11/
+
+    # Episode-level outcome (next-N child utterance cue reuse)
+    python 16_episode_outcome_uptake.py \
+        --episodes_csv ./output/v10b/${lang}_r_plus_episodes.csv \
+        --tagged_csv   ./output/${lang}_tokens_tagged.csv \
+        --language ${lang} --output_dir ./output/v16/ --windows 5,10
+done
+
+# Per-child exposure-gate β with cluster-robust SE on cue
+python 17b_exposure_gate_test.py --batch --window 5 --output_dir ./output/v17b/
+python 17c_child_level_slopes.py --batch --window 5 --output_dir ./output/v17c/
+python 17c_child_level_slopes.py --batch --window 10 --output_dir ./output/v17c/
+
+# Diagnostics and stratification
+python 17d_window_width_check.py --output_dir ./output/v17d/
+python 17e_adequate_window_subset.py --output_dir ./output/v17e/ --thresholds 12,9,6
+python 17f_uk_reverse_simulation.py --output_dir ./output/v17f/
+python 17g_manchester_diagnostics.py --output_dir ./output/v17g/
+python 17h_uk_subcorpora_meta.py --output_dir ./output/v17h/  --window 5
+python 17h_uk_subcorpora_meta.py --output_dir ./output/v17h_N10/ --window 10 \
+    --per_child_csv ./output/v17c/per_child_betas_N10.csv
+
+# Qualitative protocol features (JSON cache + raw .cha)
+python 17i_corpus_protocol_diff.py --output_dir ./output/v17i/
+python 17k_manchester_qualitative.py --output_dir ./output/v17k/
+
+# Final paper-ready figures + drop-Manchester sensitivity meta
+python 17l_paper_figures.py --output_dir ./output/v17l/
+```
+
+### Committed Paper 2 evidence (small aggregates only)
+
+Only paper-ready aggregates are tracked under git; the underlying
+TalkBank-derived intermediates remain ignored (see `.gitignore`).
+
+```
+output/
+├── v15/                                  # Mundlak decomposition (Spec A + Spec B')
+├── v17/                                  # SPEC #1 + Spec C results
+├── v17b/   exposure_gate_summary_N5.csv  # Main exposure-gate per-corpus β
+├── v17c/   per_child_betas_N{5,10}.csv   # Per-child OLS β + SE
+├── v17d/   window_moderator_results.json # Window-width moderator (WLS)
+├── v17e/   adequate_window_summary.csv   # β by window-threshold strata
+├── v17f/   uk_reverse_results.json       # UK age-band restriction
+├── v17g/   manchester_vs_uk_descriptives.csv
+├── v17h/   uk_subcorpora_meta_N5.json    # 4-way sub-corpus meta
+├── v17h_N10/                             # N=10 sensitivity rerun of 17h
+├── v17i/   protocol_diff_per_corpus.csv  # JSON-cache protocol features
+├── v17j/   final_32_child_meta.json      # NA + April extension
+├── v17k/   protocol_features_per_corpus.csv  # Raw-.cha protocol features
+└── v17l/   forest_plot_N5_vs_N10.png     # Paper-ready figures
+         funnel_plot_N{5,10}.png
+         theakston_radar.png
+         drop_manchester_meta.json
+```
+
+Every `output/v17*/SUMMARY.md` contains a stand-alone, copy-paste-ready
+summary of that stage's tables and verdict.
+
+### Companion lexicon
+
+`trans_dict_v2.json` contains the per-language acknowledgment / repair token
+lexicons consumed by `10_extract_R_plus_v2.py` (English, Japanese, Korean,
+Mandarin, Russian, Spanish, Indonesian; English entries cover both Brown and
+UK dialects).
+
+---
+
 ## The Cue Orienting Index (COI)
 
 For each grammatical cue *c* in language *L*, the COI is the unweighted mean of
