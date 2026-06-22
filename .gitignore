@@ -34,6 +34,7 @@ output/*
 !output/v17l/
 !output/v17m/
 !output/v17n/
+!output/v17o/
 !output/v15/
 !output/brown_subset/
 
@@ -54,6 +55,7 @@ output/v17k/*
 output/v17l/*
 output/v17m/*
 output/v17n/*
+output/v17o/*
 output/v15/*
 output/brown_subset/**
 
@@ -107,6 +109,10 @@ output/brown_subset/**
 !output/v17n/*.json
 !output/v17n/*.csv
 !output/v17n/*.md
+!output/v17o/*.json
+!output/v17o/*.csv
+!output/v17o/*.png
+!output/v17o/*.md
 !output/v15/*.json
 !output/v15/*.csv
 !output/v15/*.md
