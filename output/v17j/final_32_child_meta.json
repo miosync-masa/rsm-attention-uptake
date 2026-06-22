@@ -1,0 +1,56 @@
+{
+  "sub_groups": {
+    "Brown": {
+      "n_studies": 3,
+      "pooled_beta_RE": 0.022154662339732088,
+      "pooled_se_RE": 0.025882288214479413,
+      "pooled_p_RE": 0.39201009723271696,
+      "tau2": 0.0015089899370397076,
+      "I2_pct": 77.38417683687271
+    },
+    "Manchester": {
+      "n_studies": 11,
+      "pooled_beta_RE": 0.0014355317389634645,
+      "pooled_se_RE": 0.008104310291190743,
+      "pooled_p_RE": 0.8594047991926528,
+      "tau2": 0.0,
+      "I2_pct": 0.0
+    },
+    "NA_other_longitudinal (April)": {
+      "n_studies": 1,
+      "beta_single": -0.008298134967009,
+      "se_single": 0.0184018182531647
+    },
+    "UK_long_longitudinal (n_files\u226530)": {
+      "n_studies": 5,
+      "pooled_beta_RE": 0.04966461386266729,
+      "pooled_se_RE": 0.023556275270525586,
+      "pooled_p_RE": 0.03500167671874688,
+      "tau2": 0.002454193562213291,
+      "I2_pct": 89.53861054660803
+    },
+    "UK_short_observation (n_files<30)": {
+      "n_studies": 12,
+      "pooled_beta_RE": 0.03790163869323159,
+      "pooled_se_RE": 0.01327998952629533,
+      "pooled_p_RE": 0.00431669178982963,
+      "tau2": 0.0005476721644435054,
+      "I2_pct": 26.914126721158325
+    }
+  },
+  "grand_pooled": {
+    "n_studies": 32,
+    "pooled_beta_RE": 0.02411087833384601,
+    "pooled_se_RE": 0.00786673356171555,
+    "pooled_p_RE": 0.0021773106839979572,
+    "tau2": 0.0010860682131739734,
+    "I2_pct": 63.446605945366485
+  },
+  "n_children_per_subcorpus": {
+    "UK_short_observation (n_files<30)": 12,
+    "Manchester": 11,
+    "UK_long_longitudinal (n_files\u226530)": 5,
+    "Brown": 3,
+    "NA_other_longitudinal (April)": 1
+  }
+}

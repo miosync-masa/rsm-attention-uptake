@@ -1,0 +1,2 @@
+child,n_episodes,n_cues,age_min,age_max,obs_window,outcome_mean,beta_COI_x_cum,se_COI_x_cum,p_COI_x_cum,r2,n_files_in_corpus_dir,corpus_label,language,subcorpus
+NewmanRatner07,853,72,24.0,24.0,0.0,0.08089097303634232,0.020830648674447824,0.011977734472107579,0.0820146690118582,0.10343792535770624,123,NA-Pool-other,English-NA-Pool,NA_long_longitudinal

@@ -96,7 +96,13 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--json_path", default=None,
                    help="Directory of pre-converted JSON files.")
     p.add_argument("--language", required=True,
-                   choices=["English", "English-UK", "Japanese", "Korean", "Mandarin",
+                   choices=["English", "English-UK",
+                            "English-NA-Pool", "English-NewmanRatner",
+                            "English-BernsteinRatner", "English-Tardif",
+                            "English-Higginson", "English-Brent",
+                            "English-Rollins", "English-Soderstrom",
+                            "English-Manchester", "English-Providence",
+                            "Japanese", "Korean", "Mandarin",
                             "Russian", "Spanish", "Indonesian"])
     p.add_argument("--output_dir", default="./output")
     p.add_argument("--convert", action="store_true",

@@ -55,7 +55,13 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--tokens_csv", required=True,
                    help="Input tokens CSV from 01_load_corpus_json.py")
     p.add_argument("--language", required=True,
-                   choices=["English", "English-UK", "Japanese", "Korean", "Mandarin",
+                   choices=["English", "English-UK",
+                            "English-NA-Pool", "English-NewmanRatner",
+                            "English-BernsteinRatner", "English-Tardif",
+                            "English-Higginson", "English-Brent",
+                            "English-Rollins", "English-Soderstrom",
+                            "English-Manchester", "English-Providence",
+                            "Japanese", "Korean", "Mandarin",
                             "Russian", "Spanish", "Indonesian"])
     p.add_argument("--output_dir", default="./output")
     return p.parse_args()

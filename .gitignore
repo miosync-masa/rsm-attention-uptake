@@ -12,30 +12,101 @@ childes_data/
 *.cha
 *.cdc
 
-# Stage-01 outputs: token / utterance tables contain reconstructable text
-output/*_tokens.csv
-output/*_utterances.csv
-output/*_summary.json
-output/json_cache/
+# ----------------------------------------------------------------------------
+#  Working output tree — ignore everything by default, then selectively
+#  re-include the Paper 2 (exposure-gate) curated evidence.
+# ----------------------------------------------------------------------------
+output/*
 
-# Stage-02 outputs: tagged token tables also contain reconstructable text
-output/v2/
+# Paper 2 evidence subtrees we DO want to track
+!output/v17/
+!output/v17b/
+!output/v17c/
+!output/v17d/
+!output/v17e/
+!output/v17f/
+!output/v17g/
+!output/v17h/
+!output/v17h_N10/
+!output/v17i/
+!output/v17j/
+!output/v17k/
+!output/v17l/
+!output/v15/
+!output/brown_subset/
 
-# Anything else under output/ that is not the curated v3 aggregates.
-# (We publish a hand-curated copy as results/ instead of committing output/v3
-#  directly, so ignore the whole working output tree by default.)
-output/
+# Within each Paper 2 dir, allow only safe small artefacts.
+# (Hide everything first, then un-hide each safe extension.)
+output/v17/*
+output/v17b/*
+output/v17c/*
+output/v17d/*
+output/v17e/*
+output/v17f/*
+output/v17g/*
+output/v17h/*
+output/v17h_N10/*
+output/v17i/*
+output/v17j/*
+output/v17k/*
+output/v17l/*
+output/v15/*
+output/brown_subset/**
 
-# If you prefer to track output/v3 directly, comment the line above and
-# un-ignore the safe aggregates explicitly:
-# !output/v3/
-# !output/v3/*_attention_index.csv
-# !output/v3/*_uptake.csv
-# !output/v3/*_uptake_by_age.csv
-# !output/v3/*_uptake_summary.json
-# !output/v3/meta_effects_*.csv
-# !output/v3/meta_analysis_summary.json
-# !output/v3/figures/
+!output/v17/*.json
+!output/v17/*.csv
+!output/v17/*.md
+!output/v17b/*.json
+!output/v17b/*.png
+!output/v17b/*.md
+!output/v17b/exposure_gate_summary_*.csv
+!output/v17c/*.json
+!output/v17c/*.png
+!output/v17c/*.md
+!output/v17c/per_child_betas_*.csv
+!output/v17c/manchester_deep_dive.csv
+!output/v17d/*.json
+!output/v17d/*.csv
+!output/v17d/*.md
+!output/v17e/*.json
+!output/v17e/*.csv
+!output/v17e/*.md
+!output/v17f/*.json
+!output/v17f/*.csv
+!output/v17f/*.md
+!output/v17g/*.json
+!output/v17g/*.csv
+!output/v17g/*.md
+!output/v17h/*.json
+!output/v17h/*.csv
+!output/v17h/*.md
+!output/v17h_N10/*.json
+!output/v17h_N10/*.csv
+!output/v17h_N10/*.md
+!output/v17i/*.json
+!output/v17i/*.csv
+!output/v17i/*.md
+!output/v17j/*.json
+!output/v17j/*.csv
+!output/v17j/*.md
+!output/v17k/*.json
+!output/v17k/*.csv
+!output/v17k/*.md
+!output/v17l/*.json
+!output/v17l/*.csv
+!output/v17l/*.png
+!output/v17l/*.md
+!output/v15/*.json
+!output/v15/*.csv
+!output/v15/*.md
+!output/v15/*.png
+
+# Re-blacklist any large CSV that may match by name (defensive)
+output/v17*/*tokens*.csv
+output/v17*/*_episodes_with_reuse.csv
+output/v17*/*_with_reuse.csv
+output/v17b/*_post_msr_cumulative_age.csv
+output/v17*/*_utterances.csv
 
 # ----------------------------------------------------------------------------
 #  Diagnostics scratch (may quote raw utterances)
