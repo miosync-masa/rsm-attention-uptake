@@ -1,0 +1,2 @@
+child,n_episodes,n_cues,age_min,age_max,obs_window,outcome_mean,beta_COI_x_cum,se_COI_x_cum,p_COI_x_cum,r2,n_files_in_corpus_dir
+April,667,59,25.0,35.0,10.0,0.49775112443778113,-0.008298134967009096,0.018401818253164778,0.6520320474205912,0.32063896082239207,6

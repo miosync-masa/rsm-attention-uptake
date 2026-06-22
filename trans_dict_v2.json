@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "version": "v2",
+    "purpose": "Acknowledgment and repair lexicons for R+ classification (Paper 2)",
+    "author": "Torami x Boss | IMT Attention project | Paper 2 / R+ direct-coding | 2026-06-16",
+    "credit": {
+      "design": "Tomoe (Bulk persona)",
+      "simplification": "Shiro-ne (Bulk persona)",
+      "implementation": "Torami (Bulk persona)"
+    },
+    "validation_status": "Initial draft — requires native-speaker validation per language",
+    "changelog_v2": [
+      "Repair detection no longer relies solely on lexicon substring match;",
+      "the v2 classifier requires the caregiver utterance to BE a clarification request",
+      "(short utterance ≤ 3 tokens) rather than merely CONTAIN a repair word.",
+      "This fixes the 'what is that' false-positive (11.5% of Brown contingent episodes).",
+      "The lexicon itself is unchanged from v1; only the matching logic in 10_extract_R_plus_v2.py changed."
+    ],
+    "notes": [
+      "Acknowledgment: low-information positive uptake markers",
+      "Repair: clarification requests; contingent but non-positive, kept separate from R+ depth",
+      "Repair v2 logic: caregiver utterance must be ≤ 3 tokens AND match a repair item",
+      "Items are matched case-insensitively with light punctuation stripping",
+      "CJK languages (Japanese, Mandarin) use character-based matching",
+      "Latin-script languages (English, Spanish) use word-boundary matching for acknowledgment",
+      "Repair uses utterance-level token-count gate (added in v2)"
+    ],
+    "languages_covered": ["english", "english-uk", "japanese", "spanish", "mandarin"],
+    "languages_excluded_paper2": ["korean", "russian", "indonesian"]
+  },
+
+  "english": {
+    "acknowledgment": [
+      "yes", "yeah", "yep", "yup", "uh-huh", "uh huh", "mhm", "mm-hm", "mm hm",
+      "right", "okay", "ok", "good", "that's right", "thats right", "exactly",
+      "sure", "indeed", "true", "correct", "alright", "all right"
+    ],
+    "repair": [
+      "what", "huh", "hm", "pardon",
+      "say it again", "say that again", "again", "what did you say",
+      "what was that", "come again", "sorry", "excuse me"
+    ]
+  },
+
+  "english-uk": {
+    "acknowledgment": [
+      "yes", "yeah", "yep", "yup", "uh-huh", "uh huh", "mhm", "mm-hm", "mm hm",
+      "right", "okay", "ok", "good", "that's right", "thats right", "exactly",
+      "sure", "indeed", "true", "correct", "alright", "all right", "quite",
+      "rather", "well done", "lovely"
+    ],
+    "repair": [
+      "what", "huh", "hm", "pardon",
+      "say it again", "say that again", "again", "what did you say",
+      "what was that", "come again", "sorry", "excuse me"
+    ]
+  },
+
+  "japanese": {
+    "acknowledgment": [
+      "うん", "うんうん", "ううん", "そう", "そうね", "そうだね", "そうだよ",
+      "そっか", "そうか", "はい", "ね", "いいね", "いいよ", "うんっ",
+      "そだね", "そうそう", "ふーん", "なるほど", "わかった", "わかる"
+    ],
+    "repair": [
+      "え", "えっ", "なに", "なんて",
+      "もう一回", "もういっかい", "もういちど", "もう一度",
+      "ん", "は", "なんですか"
+    ]
+  },
+
+  "spanish": {
+    "acknowledgment": [
+      "sí", "si", "claro", "vale", "eso", "eso es", "bien", "ajá", "aja",
+      "mhm", "mmh", "correcto", "exacto", "muy bien", "perfecto",
+      "okay", "ok", "de acuerdo", "por supuesto"
+    ],
+    "repair": [
+      "qué", "que", "eh", "cómo", "como",
+      "otra vez", "dilo otra vez", "repítelo", "repite",
+      "no entiendo", "perdón", "perdona"
+    ]
+  },
+
+  "mandarin": {
+    "acknowledgment": [
+      "对", "嗯", "是", "好", "哦", "对啊", "对的", "嗯嗯",
+      "是的", "好的", "对呀", "嗯哼", "没错", "知道",
+      "明白", "懂了", "ok"
+    ],
+    "repair": [
+      "什么", "啊", "再说一遍", "你说什么",
+      "再说一次", "什么意思", "再来一遍"
+    ]
+  }
+}

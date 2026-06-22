@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "window": 5,
+    "prior_window": 20,
+    "min_files_per_child": 15,
+    "min_episodes_per_child": 200
+  },
+  "na_pool_per_child": [
+    {
+      "child": "NewmanRatner07",
+      "n_episodes": 853,
+      "n_cues": 72,
+      "age_min": 24.0,
+      "age_max": 24.0,
+      "obs_window": 0.0,
+      "outcome_mean": 0.08089097303634232,
+      "beta_COI_x_cum": 0.020830648674447824,
+      "se_COI_x_cum": 0.011977734472107579,
+      "p_COI_x_cum": 0.0820146690118582,
+      "r2": 0.10343792535770624,
+      "n_files_in_corpus_dir": 123,
+      "corpus_label": "NA-Pool-other",
+      "language": "English-NA-Pool",
+      "subcorpus": "NA_long_longitudinal"
+    }
+  ],
+  "meta_by_subcorpus_na": {
+    "NA_long_longitudinal": {
+      "n_studies": 1,
+      "note": "n<2",
+      "beta_single": 0.020830648674447824,
+      "se_single": 0.011977734472107579
+    }
+  },
+  "grand_pooled_meta": {
+    "n_studies": 32,
+    "Q": 81.94653376984608,
+    "df": 31,
+    "tau2": 0.0009602269026167803,
+    "I2_pct": 62.17045605972038,
+    "pooled_beta_RE": 0.025321008565177175,
+    "pooled_se_RE": 0.007550544493796741,
+    "pooled_z_RE": 3.353534117437493,
+    "pooled_p_RE": 0.0007978657683109791,
+    "pooled_beta_FE": 0.02370369384558072,
+    "pooled_se_FE": 0.004210384500622347
+  }
+}

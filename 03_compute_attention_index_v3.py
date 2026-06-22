@@ -52,7 +52,13 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--tagged_csv", required=True,
                    help="Tagged tokens CSV from 02_extract_cues.py")
     p.add_argument("--language", required=True,
-                   choices=["English", "English-UK", "Japanese", "Korean", "Mandarin",
+                   choices=["English", "English-UK",
+                            "English-NA-Pool", "English-NewmanRatner",
+                            "English-BernsteinRatner", "English-Tardif",
+                            "English-Higginson", "English-Brent",
+                            "English-Rollins", "English-Soderstrom",
+                            "English-Manchester", "English-Providence",
+                            "Japanese", "Korean", "Mandarin",
                             "Russian", "Spanish", "Indonesian"])
     p.add_argument("--output_dir", default="./output")
     p.add_argument("--caregiver_only", action="store_true", default=True,

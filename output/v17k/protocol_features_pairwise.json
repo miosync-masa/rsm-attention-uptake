@@ -1,0 +1,486 @@
+{
+  "n_utt": {
+    "manchester_median": 1558.5,
+    "Brown": {
+      "U": 2649.0,
+      "p": 3.9615947912531687e-07,
+      "other_median": 1135.0
+    },
+    "UK_long_long": {
+      "U": 2812.5,
+      "p": 0.8194595004267511,
+      "other_median": 1569.5
+    },
+    "UK_short_obs": {
+      "U": 12317.0,
+      "p": 6.922689488162003e-38,
+      "other_median": 296.0
+    }
+  },
+  "n_speakers": {
+    "manchester_median": 3.0,
+    "Brown": {
+      "U": 261.0,
+      "p": 7.454528678201454e-18,
+      "other_median": 5.0
+    },
+    "UK_long_long": {
+      "U": 4030.5,
+      "p": 9.946138190037036e-10,
+      "other_median": 3.0
+    },
+    "UK_short_obs": {
+      "U": 960.5,
+      "p": 6.712383422828772e-31,
+      "other_median": 5.0
+    }
+  },
+  "n_participants_declared": {
+    "manchester_median": 3.0,
+    "Brown": {
+      "U": 261.0,
+      "p": 7.454528678201454e-18,
+      "other_median": 5.0
+    },
+    "UK_long_long": {
+      "U": 3810.5,
+      "p": 4.191045064481868e-07,
+      "other_median": 3.0
+    },
+    "UK_short_obs": {
+      "U": 960.5,
+      "p": 6.712383422828772e-31,
+      "other_median": 5.0
+    }
+  },
+  "has_investigator": {
+    "manchester_median": 1.0,
+    "Brown": {
+      "U": 1675.0,
+      "p": 0.6198590175528382,
+      "other_median": 1.0
+    },
+    "UK_long_long": {
+      "U": 4515.0,
+      "p": 1.1737295074130846e-19,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 12153.0,
+      "p": 2.0575401718612478e-47,
+      "other_median": 0.0
+    }
+  },
+  "n_caregiver_codes": {
+    "manchester_median": 1.0,
+    "Brown": {
+      "U": 1075.0,
+      "p": 5.624953732748089e-06,
+      "other_median": 1.0
+    },
+    "UK_long_long": {
+      "U": 2605.0,
+      "p": 0.36350101798344325,
+      "other_median": 1.0
+    },
+    "UK_short_obs": {
+      "U": 680.0,
+      "p": 7.642427400321375e-35,
+      "other_median": 3.0
+    }
+  },
+  "duration_minutes": {
+    "manchester_median": 30.0,
+    "Brown": {
+      "U": 280.0,
+      "p": 5.0271765171532844e-08,
+      "other_median": 60.0
+    },
+    "UK_long_long": {
+      "U": 259.5,
+      "p": 0.762360780223476,
+      "other_median": 30.0
+    },
+    "UK_short_obs": {
+      "p": NaN
+    }
+  },
+  "pct_xxx": {
+    "manchester_median": 0.0378567620401635,
+    "Brown": {
+      "U": 1163.0,
+      "p": 0.013487693677047987,
+      "other_median": 0.05076026367420283
+    },
+    "UK_long_long": {
+      "U": 1978.5,
+      "p": 0.00453609808029245,
+      "other_median": 0.058727727670946236
+    },
+    "UK_short_obs": {
+      "U": 614.0,
+      "p": 4.645271905230663e-31,
+      "other_median": 0.15174723942903312
+    }
+  },
+  "pct_yyy": {
+    "manchester_median": 0.0,
+    "Brown": {
+      "U": 806.0,
+      "p": 8.544796236616623e-09,
+      "other_median": 0.0007714333699190069
+    },
+    "UK_long_long": {
+      "U": 3029.0,
+      "p": 0.055266749166321315,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 4452.5,
+      "p": 2.916008798205516e-06,
+      "other_median": 0.0
+    }
+  },
+  "pct_www": {
+    "manchester_median": 0.005180944315126151,
+    "Brown": {
+      "U": 2824.5,
+      "p": 2.1842006439835053e-09,
+      "other_median": 0.0
+    },
+    "UK_long_long": {
+      "U": 3643.0,
+      "p": 0.0009754099034631478,
+      "other_median": 0.0007378244029545582
+    },
+    "UK_short_obs": {
+      "U": 11393.5,
+      "p": 1.0737108030051824e-31,
+      "other_median": 0.0
+    }
+  },
+  "pct_amp_event": {
+    "manchester_median": 0.011767418308653937,
+    "Brown": {
+      "U": 2484.0,
+      "p": 2.3078020372033563e-05,
+      "other_median": 0.0062914081858601485
+    },
+    "UK_long_long": {
+      "U": 1855.0,
+      "p": 0.0009916129908734044,
+      "other_median": 0.018529704015448484
+    },
+    "UK_short_obs": {
+      "U": 3325.5,
+      "p": 3.1628950899236208e-09,
+      "other_median": 0.020629854239812746
+    }
+  },
+  "pct_timecode": {
+    "manchester_median": 0.0,
+    "Brown": {
+      "U": 1650.0,
+      "p": 1.0,
+      "other_median": 0.0
+    },
+    "UK_long_long": {
+      "U": 660.0,
+      "p": 6.39130825104018e-25,
+      "other_median": 0.980021572791317
+    },
+    "UK_short_obs": {
+      "U": 6160.0,
+      "p": 1.0,
+      "other_median": 0.0
+    }
+  },
+  "pct_plus_info": {
+    "manchester_median": 0.0,
+    "Brown": {
+      "U": 1680.0,
+      "p": 0.4660949591133924,
+      "other_median": 0.0
+    },
+    "UK_long_long": {
+      "U": 673.0,
+      "p": 8.87592110682835e-24,
+      "other_median": 0.014329764163730007
+    },
+    "UK_short_obs": {
+      "U": 6160.0,
+      "p": 1.0,
+      "other_median": 0.0
+    }
+  },
+  "pct_CHI": {
+    "manchester_median": 0.37240259382374197,
+    "Brown": {
+      "U": 263.0,
+      "p": 1.906513114140842e-12,
+      "other_median": 0.5046154845961348
+    },
+    "UK_long_long": {
+      "U": 2237.5,
+      "p": 0.059455869428243324,
+      "other_median": 0.4152580178442248
+    },
+    "UK_short_obs": {
+      "U": 3677.0,
+      "p": 2.122599179313822e-07,
+      "other_median": 0.45473510465142936
+    }
+  },
+  "pct_MOT": {
+    "manchester_median": 0.5897808562203006,
+    "Brown": {
+      "U": 3173.0,
+      "p": 1.0602477839034386e-14,
+      "other_median": 0.3669114155402421
+    },
+    "UK_long_long": {
+      "U": 3934.0,
+      "p": 1.3199025877632292e-05,
+      "other_median": 0.536003088301028
+    },
+    "UK_short_obs": {
+      "U": 11850.0,
+      "p": 1.3231407370257576e-32,
+      "other_median": 0.32541187090950124
+    }
+  },
+  "pct_FAT": {
+    "manchester_median": 0.0,
+    "Brown": {
+      "U": 1093.0,
+      "p": 3.411007534282441e-06,
+      "other_median": 0.0
+    },
+    "UK_long_long": {
+      "U": 2596.0,
+      "p": 0.24892949875180181,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 2005.0,
+      "p": 6.083883476130981e-23,
+      "other_median": 0.0230131062177309
+    }
+  },
+  "pct_INV": {
+    "manchester_median": 0.02602586343938127,
+    "Brown": {
+      "U": 3270.0,
+      "p": 1.2962483830515605e-16,
+      "other_median": 0.0
+    },
+    "UK_long_long": {
+      "U": 3970.0,
+      "p": 6.3929551617808525e-06,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 12208.0,
+      "p": 4.431461909929712e-42,
+      "other_median": 0.0
+    }
+  },
+  "pct_mor": {
+    "manchester_median": 0.9698970840480274,
+    "Brown": {
+      "U": 1384.0,
+      "p": 0.1775598283909029,
+      "other_median": 0.9841063817755984
+    },
+    "UK_long_long": {
+      "U": 4398.0,
+      "p": 1.3205370855328931e-09,
+      "other_median": 0.9260826530419863
+    },
+    "UK_short_obs": {
+      "U": 11611.0,
+      "p": 4.62566219731448e-30,
+      "other_median": 0.86043185696556
+    }
+  },
+  "pct_gra": {
+    "manchester_median": 0.9698970840480274,
+    "Brown": {
+      "U": 1384.0,
+      "p": 0.1775598283909029,
+      "other_median": 0.9841063817755984
+    },
+    "UK_long_long": {
+      "U": 4398.0,
+      "p": 1.3205370855328931e-09,
+      "other_median": 0.9260826530419863
+    },
+    "UK_short_obs": {
+      "U": 11611.0,
+      "p": 4.62566219731448e-30,
+      "other_median": 0.86043185696556
+    }
+  },
+  "pct_com": {
+    "manchester_median": 0.007791196167516057,
+    "Brown": {
+      "U": 878.0,
+      "p": 8.77740644506428e-05,
+      "other_median": 0.024190027882991745
+    },
+    "UK_long_long": {
+      "U": 3041.0,
+      "p": 0.28256754467408174,
+      "other_median": 0.006369631057733539
+    },
+    "UK_short_obs": {
+      "U": 403.5,
+      "p": 2.3870137367887852e-33,
+      "other_median": 0.09419274377937656
+    }
+  },
+  "pct_sit": {
+    "manchester_median": 0.0,
+    "Brown": {
+      "U": 456.0,
+      "p": 2.0496539697263323e-12,
+      "other_median": 0.003435909233010682
+    },
+    "UK_long_long": {
+      "U": 3187.0,
+      "p": 0.018280015145995473,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 6954.0,
+      "p": 0.009764628915804683,
+      "other_median": 0.0
+    }
+  },
+  "pct_act": {
+    "manchester_median": 0.0,
+    "Brown": {
+      "U": 176.0,
+      "p": 1.8296222423917868e-15,
+      "other_median": 0.055355949197860965
+    },
+    "UK_long_long": {
+      "U": 3151.0,
+      "p": 0.08000400188291537,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 7836.0,
+      "p": 2.3871021056258967e-06,
+      "other_median": 0.0
+    }
+  },
+  "pct_exp": {
+    "manchester_median": 0.0006734009787667829,
+    "Brown": {
+      "U": 574.0,
+      "p": 3.3560238034081946e-08,
+      "other_median": 0.008365234201121723
+    },
+    "UK_long_long": {
+      "U": 3974.0,
+      "p": 1.8731085722730132e-06,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 9255.0,
+      "p": 2.0461853178745538e-13,
+      "other_median": 0.0
+    }
+  },
+  "pct_spa": {
+    "manchester_median": 0.0,
+    "Brown": {
+      "U": 1045.0,
+      "p": 4.714451946887781e-11,
+      "other_median": 0.0
+    },
+    "UK_long_long": {
+      "U": 2750.0,
+      "p": 1.0,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 6050.0,
+      "p": 0.1620193680723876,
+      "other_median": 0.0
+    }
+  },
+  "pct_xpho": {
+    "manchester_median": 0.0,
+    "Brown": {
+      "U": 825.0,
+      "p": 6.233749584321479e-15,
+      "other_median": 0.0003551136363636364
+    },
+    "UK_long_long": {
+      "U": 2750.0,
+      "p": 1.0,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 5830.0,
+      "p": 0.014228679092843706,
+      "other_median": 0.0
+    }
+  },
+  "pct_err": {
+    "manchester_median": 0.005026908200010102,
+    "Brown": {
+      "U": 2152.0,
+      "p": 0.01015161711911071,
+      "other_median": 0.0016264996564663602
+    },
+    "UK_long_long": {
+      "U": 4569.5,
+      "p": 2.6438459021602952e-12,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 10808.0,
+      "p": 5.0094169701880263e-29,
+      "other_median": 0.0
+    }
+  },
+  "pct_add": {
+    "manchester_median": 0.005180944315126151,
+    "Brown": {
+      "U": 1973.0,
+      "p": 0.1013321952296599,
+      "other_median": 0.0035416323224793755
+    },
+    "UK_long_long": {
+      "U": 4074.5,
+      "p": 8.992521371964078e-07,
+      "other_median": 0.0
+    },
+    "UK_short_obs": {
+      "U": 7616.0,
+      "p": 0.0021449911580464325,
+      "other_median": 0.0033140221300897834
+    }
+  },
+  "n_distinct_dep_tiers": {
+    "manchester_median": 6.0,
+    "Brown": {
+      "U": 113.5,
+      "p": 3.3278098284402224e-15,
+      "other_median": 11.0
+    },
+    "UK_long_long": {
+      "U": 4495.5,
+      "p": 9.14155292044628e-11,
+      "other_median": 3.0
+    },
+    "UK_short_obs": {
+      "U": 9415.5,
+      "p": 1.7723823359828747e-12,
+      "other_median": 5.0
+    }
+  }
+}
