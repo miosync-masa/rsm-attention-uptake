@@ -183,7 +183,7 @@ and `output/json_cache/` are TalkBank-derived and are **git-ignored**.)
 
 > **Branch.** All Paper 2 material — additional scripts, intermediate evidence
 > files, and the meta-analytic stack — lives on the
-> [`paper2-exposure-gate`](https://github.com/miosync-masa/rsm-attention-uptake/tree/paper2-exposure-gate)
+> `paper2-exposure-gate` [REPO URL REDACTED FOR ANONYMOUS REVIEW]
 > branch. The `main` branch contains only the Paper 1 (RSM) pipeline.
 
 ### Hypothesis
