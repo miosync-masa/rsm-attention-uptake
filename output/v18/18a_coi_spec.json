@@ -1,0 +1,93 @@
+{
+  "actual_code_formula": {
+    "description": "AI = unweighted mean of 5 salience dimensions (per 03_compute_attention_index_v3.py line 430-432). The Paper 2 SI uses a 4-component renaming that drops S_frequency_normalized for anti-circularity. The code presently retains the 5-component formula; the 4-component variant is documented below for reproducibility from the SI.",
+    "components_in_code": {
+      "S_acoustic": "Proportion of cue occurrences at utterance-final position (prosody-end proxy when no audio).",
+      "S_positional": "max(P(first decile), P(last decile)) - 1/n_bins ; positional edge bias.",
+      "S_frequency_normalized": "sigmoid(z-score of log token count within language).  Equivalent to log-frequency squashed to [0,1].",
+      "S_repetition": "min(log1p(n_distinct_host_lemmas) / log(101), 1.0) ; host breadth, log-scaled.",
+      "S_perceptual": "min Levenshtein distance to other cue surface forms / max(len) ; orthographic distinctiveness."
+    },
+    "code_weights": "Equal weights, w_i = 0.2 each. Implemented at 03_compute_attention_index_v3.py:431."
+  },
+  "paper2_SI_4component_mapping": {
+    "description": "The four-component Paper 2 SI formula drops S_frequency_normalized to make COI anti-circular w.r.t. log-token-frequency.",
+    "components": {
+      "Position (w_1)": "S_positional",
+      "ProsodyProxy (w_2)": "S_acoustic",
+      "Breadth (w_3)": "S_repetition",
+      "Discriminability (w_4)": "S_perceptual"
+    },
+    "weights": "Equal weights, w_i = 0.25 each.",
+    "formula": "COI_4comp(c) = (1/4) * (S_positional + S_acoustic + S_repetition + S_perceptual)"
+  },
+  "per_component_scaling": {
+    "S_positional": "Computed as a probability difference in [-1/n_bins, 1 - 1/n_bins]; no further scaling. Range observed approximately [-0.1, +0.9].",
+    "S_acoustic": "Proportion in [0, 1]; no further scaling.",
+    "S_repetition": "Log-scaled within [0, 1] (formula floors at 0 for cues with no host, caps at 1.0 for cues with >= 100 host lemmas).",
+    "S_perceptual": "Bounded in [0, 1]; min Levenshtein distance / max(len). Cues with no comparison neighbour get neutral 0.5.",
+    "S_frequency_normalized": "Computed as sigmoid(z-score of log count) where z-score uses within-language mean/sd of log counts. Bounded in (0, 1) by sigmoid."
+  },
+  "within_corpus_z_scoring": "z-scoring is applied to per-cue log token counts BEFORE the sigmoid transform (S_frequency component only). The four other components are NOT z-scored; they are used in their native [0,1] range and combined by equal-weighted unweighted mean.",
+  "missing_data_rule": {
+    "rule_applied": "Listwise cue exclusion for any cue with count < min_cue_count (--min_cue_count, default 5). Components that would otherwise be undefined return 0.0 (S_acoustic, S_positional, S_repetition) or 0.5 (S_perceptual, when no neighbour cue exists) rather than NaN. NaN cues are dropped from downstream COI computations.",
+    "code_locations": "03_compute_attention_index_v3.py: line 66 (min_cue_count), lines 84-86, 97-103, 124-139, 142-159."
+  },
+  "anti_circularity_check_r_COI_vs_log_token_freq": {
+    "English-Manchester": {
+      "n_cues": 143,
+      "r_5comp_vs_logfreq": 0.7907,
+      "r_4comp_vs_logfreq": 0.6224
+    },
+    "English-NA-Pool": {
+      "n_cues": 168,
+      "r_5comp_vs_logfreq": 0.7882,
+      "r_4comp_vs_logfreq": 0.6354
+    },
+    "English-Providence": {
+      "n_cues": 56,
+      "r_5comp_vs_logfreq": 0.8103,
+      "r_4comp_vs_logfreq": 0.5927
+    },
+    "English": {
+      "n_cues": 129,
+      "r_5comp_vs_logfreq": 0.7085,
+      "r_4comp_vs_logfreq": 0.4897
+    },
+    "Indonesian": {
+      "n_cues": 28,
+      "r_5comp_vs_logfreq": 0.8055,
+      "r_4comp_vs_logfreq": 0.6137
+    },
+    "Japanese": {
+      "n_cues": 74,
+      "r_5comp_vs_logfreq": 0.6076,
+      "r_4comp_vs_logfreq": 0.4897
+    },
+    "Korean": {
+      "n_cues": 7,
+      "r_5comp_vs_logfreq": 0.8727,
+      "r_4comp_vs_logfreq": 0.8321
+    },
+    "Mandarin": {
+      "n_cues": 11,
+      "r_5comp_vs_logfreq": 0.9063,
+      "r_4comp_vs_logfreq": 0.8443
+    },
+    "Russian": {
+      "n_cues": 12,
+      "r_5comp_vs_logfreq": 0.7249,
+      "r_4comp_vs_logfreq": 0.6078
+    },
+    "Spanish": {
+      "n_cues": 38,
+      "r_5comp_vs_logfreq": 0.486,
+      "r_4comp_vs_logfreq": 0.1629
+    },
+    "_pooled_within_language_z": {
+      "n_cues": 666,
+      "r_5comp_vs_logfreq": 0.7401,
+      "r_4comp_vs_logfreq": 0.5614
+    }
+  }
+}

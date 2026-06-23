@@ -1,0 +1,10 @@
+table,corpus,window_N,metric,value
+S5.1,UK_short_obs,15,truncation_pct,0.6244
+S5.1,Brown,20,truncation_pct,4.2779
+S5.1,Manchester,20,truncation_pct,1.5631
+S5.1,UK_long_long,20,truncation_pct,1.231
+S5.1,UK_short_obs,20,truncation_pct,0.9076
+S5.2,Brown,20,var_p,0.184246
+S5.2,Brown,20,base_rate,0.756038
+S5.2,Manchester,20,var_p,0.21956
+S5.2,Manchester,20,base_rate,0.66943
