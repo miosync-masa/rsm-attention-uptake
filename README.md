@@ -408,6 +408,28 @@ output/
 Every `output/v17*/SUMMARY.md` contains a stand-alone, copy-paste-ready
 summary of that stage's tables and verdict.
 
+### Paper 2 publication-ready figures
+
+Mirroring the Paper 1 convention (`results/figures/Fig1_forest_peak.png` etc.),
+the Paper 2 figures are also published under `results/figures/` with a
+`Paper2_` prefix so reviewers who only browse the curated `results/` tree see
+them:
+
+| File | Source script / output | Used in manuscript as |
+|---|---|---|
+| `results/figures/Paper2_Fig1_forest_N5_N10.png`         | `17l_paper_figures.py` → `output/v17l/forest_plot_N5_vs_N10.png`       | **Figure 1** — per-child forest, N=5 and N=10 panels with corrected diamond |
+| `results/figures/Paper2_Fig2a_funnel_N5.png`            | `17l_paper_figures.py` → `output/v17l/funnel_plot_N5.png`             | **Figure 2a** — funnel + Egger, outcome window N=5 |
+| `results/figures/Paper2_Fig2b_funnel_N10.png`           | `17l_paper_figures.py` → `output/v17l/funnel_plot_N10.png`            | **Figure 2b** — funnel + Egger, outcome window N=10 |
+| `results/figures/Paper2_Fig3_theakston_radar.png`       | `17l_paper_figures.py` → `output/v17l/theakston_radar.png`            | **Figure 3** — 5-axis Theakston-Manchester protocol signature |
+| `results/figures/Paper2_Fig4_window_grid_4panel.png`    | `17m_window_range_sensitivity.py` → `output/v17m/forest_4panel.png`   | **Figure 4** — 4-window forest (N = 3, 5, 10, 20) |
+| `results/figures/Paper2_Fig5_pooled_beta_trajectory.png`| `17m_window_range_sensitivity.py` → `output/v17m/pooled_beta_trajectory.png` | **Figure 5** — pooled β trajectory FULL vs DROP-MANC across N |
+| `results/figures/Paper2_Fig6_three_outcome_modes.png`   | `17o_window_null_mechanism.py` → `output/v17o/trajectory_three_modes.png`    | **Figure 6** — LPM / Logit / Continuous β trajectory across six windows |
+
+The `results/` copies are kept byte-identical to the upstream `output/v17*/`
+PNGs at commit time; when a script regenerates an upstream PNG, the
+corresponding `results/figures/Paper2_*.png` should be refreshed in the same
+commit to keep the two trees in sync.
+
 ### Companion lexicon
 
 `trans_dict_v2.json` contains the per-language acknowledgment / repair token
