@@ -537,7 +537,7 @@ def radar_plot(df: pd.DataFrame, output_path: Path) -> None:
     ax.set_yticklabels(["0.25", "0.50", "0.75", "1.00"], fontsize=7)
     ax.grid(alpha=0.4)
     ax.legend(loc="upper right", bbox_to_anchor=(1.35, 1.05), fontsize=9)
-    ax.set_title("Theakston-Manchester protocol signature\n"
+    ax.set_title("Manchester standardized-protocol profile\n"
                   "(min-max normalised within 4 sub-corpora)",
                   fontsize=11, pad=20)
     plt.tight_layout()

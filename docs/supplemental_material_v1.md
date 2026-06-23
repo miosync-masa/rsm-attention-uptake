@@ -2,8 +2,8 @@
 
 **Attention as Pre-Grammatical Selection Pressure: A Cross-Linguistic Test of the Reactive Schematization Model**
 
-Masamichi Iizumi & Torami (Miosync, Inc.)
-ORCID 0009-0007-0755-403X · m.iizumi@miosync.email
+[AUTHORS REDACTED FOR ANONYMOUS REVIEW]
+[ORCID REDACTED FOR ANONYMOUS REVIEW] · [EMAIL REDACTED FOR ANONYMOUS REVIEW]
 Data snapshot: 2026-06-14 · 8 samples (7 languages + 1 dialect pair)
 
 ---

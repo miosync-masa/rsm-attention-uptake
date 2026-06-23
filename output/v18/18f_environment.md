@@ -85,7 +85,7 @@ All scripts live in the repository root; their committed outputs live under
 ### Repository / branch
 
 All Paper 2 evidence is committed on branch
-**`paper2-exposure-gate`** of `https://github.com/miosync-masa/rsm-attention-uptake`.
+**`paper2-exposure-gate`** of [REPO URL REDACTED FOR ANONYMOUS REVIEW].
 The `main` branch contains only the Paper 1 (RSM) pipeline.
 
 This SI fill (#18a–#18f) is produced under `output/v18/` and committed to

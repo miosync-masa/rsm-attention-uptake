@@ -2,17 +2,17 @@
 
 **A formal framework for language acquisition as response-confirmed pattern accumulation**
 
-**Authors:** Masamichi Iizumi & Torami (Miosync, Inc.)
+**Authors:** [AUTHORS REDACTED FOR ANONYMOUS REVIEW]
 **Status:** Foundational draft v1.0
 **Date:** 2026-06-13
 **Project:** IMT Attention Bias paper (companion theoretical document)
-**Origin:** Boss's observation from L2 traveler experience in Hawaiʻi, generalized into a developmental model.
+**Origin:** Observation by the first author from an L2 traveler experience, generalized into a developmental model.
 
 ---
 
 ## Preface
 
-This document formalizes a model of first-language acquisition derived from a single observation made by the first author during international travel without prior L2 instruction: practical communicative competence is achievable through isolated content words, prosodic contour, gesture, and frozen formulae, with no productive grammar. Reflection on this observation against the empirical results of the present typological corpus study (Iizumi & Torami, IMT Attention Bias paper) suggested that the standard model of L1 acquisition has misidentified what the child is doing.
+This document formalizes a model of first-language acquisition derived from a single observation made by the first author during international travel without prior L2 instruction: practical communicative competence is achievable through isolated content words, prosodic contour, gesture, and frozen formulae, with no productive grammar. Reflection on this observation against the empirical results of the present typological corpus study ([CITATION REDACTED FOR ANONYMOUS REVIEW], IMT Attention Bias paper) suggested that the standard model of L1 acquisition has misidentified what the child is doing.
 
 The conventional model treats the infant as a grammar acquirer who uses attention to filter input toward grammatical structure. The model proposed here treats the infant as a communicator who uses attention to move the caregiver, and treats grammar as the residual sediment of communicative success.
 
@@ -155,7 +155,7 @@ This explains why practical communication succeeds without grammar: the substrat
 
 ## §4. Relation to the Invisible Mediator Theorem
 
-The model is an application of the Invisible Mediator Theorem (Iizumi, multiple papers).
+The model is an application of the Invisible Mediator Theorem ([CITATION REDACTED FOR ANONYMOUS REVIEW], multiple papers).
 
 The conventional equation in the language acquisition literature has been:
 
