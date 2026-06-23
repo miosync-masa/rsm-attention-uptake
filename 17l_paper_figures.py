@@ -143,6 +143,135 @@ def _norm_subcorpus(s: str) -> str:
     return s
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# April (NA single child) per-window refit (ported from 17m so 17l no longer
+# imports a stale N=5-only β for the N=10 panel)
+# ─────────────────────────────────────────────────────────────────────────────
+
+import bisect as _bisect_april
+
+
+def _z_local(s: pd.Series) -> pd.Series:
+    s = pd.to_numeric(s, errors="coerce")
+    sd = s.std()
+    if sd is None or pd.isna(sd) or sd == 0:
+        return s - s.mean()
+    return (s - s.mean()) / sd
+
+
+def _build_child_utt_index(tagged_csv: Path) -> Dict[str, Tuple[np.ndarray, List[set]]]:
+    cols = ["file", "speaker_role", "utterance_index", "cue_subtype", "is_cue_token"]
+    df = pd.read_csv(tagged_csv, usecols=cols, low_memory=False, dtype={"file": str})
+    df = df[df["speaker_role"] == "child"].copy()
+    cue_rows = df[df["is_cue_token"].astype(str) == "True"][
+        ["file", "utterance_index", "cue_subtype"]
+    ].copy()
+    cue_rows["cue_subtype"] = cue_rows["cue_subtype"].fillna("").astype(str).str.strip()
+    cue_rows = cue_rows[cue_rows["cue_subtype"] != ""]
+    cues_per_utt: Dict[Tuple[str, int], set] = {}
+    for f, idx, cue in cue_rows.itertuples(index=False, name=None):
+        cues_per_utt.setdefault((f, int(idx)), set()).add(cue)
+    utts = df[["file", "utterance_index"]].drop_duplicates().copy()
+    utts["utterance_index"] = utts["utterance_index"].astype(int)
+    file_index: Dict[str, Tuple[np.ndarray, List[set]]] = {}
+    for f, g in utts.groupby("file"):
+        idxs = np.sort(g["utterance_index"].values.astype(int))
+        cue_sets = [cues_per_utt.get((f, int(i)), set()) for i in idxs]
+        file_index[str(f)] = (idxs, cue_sets)
+    return file_index
+
+
+def _add_prior_local_freq(reuse_df: pd.DataFrame,
+                            file_index: Dict[str, Tuple[np.ndarray, List[set]]],
+                            prior_window: int = 20) -> pd.DataFrame:
+    n = len(reuse_df)
+    prior = np.zeros(n, dtype=np.int32)
+    files = reuse_df["file"].astype(str).values
+    utt_idxs = reuse_df["child_utt_idx"].astype(int).values
+    cues = reuse_df["cue_subtype"].astype(str).values
+    for i in range(n):
+        entry = file_index.get(files[i])
+        if entry is None:
+            continue
+        idxs, cue_sets = entry
+        pos = _bisect_april.bisect_left(idxs, utt_idxs[i])
+        start = max(0, pos - prior_window)
+        window_slice = cue_sets[start:pos]
+        c = cues[i]
+        prior[i] = sum(1 for s in window_slice if c in s)
+    out = reuse_df.copy()
+    out["prior_local_freq"] = prior
+    return out
+
+
+def _refit_april_at_window(window: int) -> Optional[pd.DataFrame]:
+    """
+    Per-child OLS refit for April at outcome window N. Mirrors the routine
+    used in 17m_window_range_sensitivity.refit_april_at_window so that 17l
+    no longer carries a stale N=5-only β into the N=10 panel of Figure 1.
+    """
+    reuse_csv = Path("./output/v16/English-NA-Pool_episodes_with_reuse.csv")
+    tagged_csv = Path("./output/English-NA-Pool_tokens_tagged.csv")
+    joined_csv = Path("./output/v11/English-NA-Pool_r_plus_joined.csv")
+    json_cache = Path("./output/json_cache/English-NA-Pool")
+    if not all(p.exists() for p in [reuse_csv, tagged_csv, joined_csv, json_cache]):
+        return None
+    outcome_col = f"next_{window}_reuse"
+    reuse = pd.read_csv(reuse_csv, low_memory=False, dtype={"file": str})
+    if outcome_col not in reuse.columns:
+        return None
+    reuse = reuse[reuse["r_plus_label"] != "no_contingent_response"].copy()
+    file_to_child: Dict[str, str] = {}
+    for child_dir in json_cache.iterdir():
+        if child_dir.is_dir():
+            for jf in child_dir.rglob("*.json"):
+                file_to_child[jf.stem] = child_dir.name
+    reuse["child"] = reuse["file"].astype(str).map(file_to_child)
+    reuse = reuse.dropna(subset=["child"]).copy()
+    reuse = reuse[reuse["child"] == "April"].copy()
+    if len(reuse) < 100:
+        return None
+    fi = _build_child_utt_index(tagged_csv)
+    reuse = _add_prior_local_freq(reuse, fi, prior_window=20)
+    joined = pd.read_csv(joined_csv)
+    if "log_caregiver_count" in joined.columns:
+        joined = joined.rename(columns={"log_caregiver_count": "log_cue_freq"})
+    elif "logFreq" in joined.columns:
+        joined = joined.rename(columns={"logFreq": "log_cue_freq"})
+    df = reuse.merge(joined[["cue_subtype", "COI", "log_cue_freq"]],
+                       on="cue_subtype", how="inner")
+    df = df.dropna(subset=[outcome_col, "COI", "log_cue_freq", "child_age_months"]).copy()
+    df = df.sort_values(["child", "cue_subtype", "child_age_months", "file", "child_utt_idx"]).reset_index(drop=True)
+    df["cumulative_cue_attempts"] = df.groupby(["child", "cue_subtype"]).cumcount()
+    df_post = df[df["child_age_months"] >= 24].copy()
+    if len(df_post) < 100:
+        return None
+    df_post["COI_z_local"]     = _z_local(df_post["COI"])
+    df_post["cum_z_local"]     = _z_local(df_post["cumulative_cue_attempts"])
+    df_post["prior_z_local"]   = _z_local(df_post["prior_local_freq"])
+    df_post["logfreq_z_local"] = _z_local(df_post["log_cue_freq"])
+    df_post["COI_x_cum_local"] = df_post["COI_z_local"] * df_post["cum_z_local"]
+    preds = ["COI_z_local", "cum_z_local", "COI_x_cum_local",
+             "prior_z_local", "logfreq_z_local"]
+    X = sm.add_constant(df_post[preds].astype(float), has_constant="add")
+    y = df_post[outcome_col].astype(float)
+    try:
+        fit = sm.OLS(y, X).fit(
+            cov_type="cluster",
+            cov_kwds={"groups": df_post["cue_subtype"].astype(str).values},
+        )
+    except Exception:
+        return None
+    return pd.DataFrame([{
+        "child":              "April",
+        "n_episodes":         int(len(df_post)),
+        "obs_window_months":  float(df_post["child_age_months"].max() - df_post["child_age_months"].min()),
+        "beta_COI_x_cum":     float(fit.params["COI_x_cum_local"]),
+        "se_COI_x_cum":       float(fit.bse["COI_x_cum_local"]),
+        "p_COI_x_cum":        float(fit.pvalues["COI_x_cum_local"]),
+    }])
+
+
 def load_per_child_table(window: int) -> pd.DataFrame:
     """Build the merged per-child table for a given outcome window N."""
     uk_path = Path(f"./output/v17h{'_N10' if window == 10 else ''}/"
@@ -154,14 +283,15 @@ def load_per_child_table(window: int) -> pd.DataFrame:
     uk = uk[~uk["subcorpus"].astype(str).str.contains("also in UK pool", na=False)].copy()
     uk["subcorpus_norm"] = uk["subcorpus"].apply(_norm_subcorpus)
 
-    # Add April (only N=5 is computed; reuse same β for N=10 if missing)
-    april_path = Path("./output/v17j/na_pool_per_child_betas_loose.csv")
-    if april_path.exists():
-        april = pd.read_csv(april_path)
+    # Add April — REFIT at the actual outcome window (was previously
+    # loaded statically from v17j/na_pool_per_child_betas_loose.csv which
+    # only stored N=5, causing N=10 to reuse the N=5 β=-0.0083). The
+    # window-aware refit recovers April's true N=10 β=+0.0477 (p=0.019).
+    april = _refit_april_at_window(window)
+    if april is not None and not april.empty:
         april["subcorpus_norm"] = "NA_other"
         april["subcorpus"] = "NA_other_longitudinal (April)"
         april["corpus_label"] = "NA-Pool-April"
-        april = april.rename(columns={"obs_window": "obs_window_months"})
         keep = ["child", "n_episodes", "obs_window_months",
                 "beta_COI_x_cum", "se_COI_x_cum", "p_COI_x_cum",
                 "subcorpus_norm", "subcorpus", "corpus_label"]

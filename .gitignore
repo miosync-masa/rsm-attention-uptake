@@ -32,6 +32,11 @@ output/*
 !output/v17j/
 !output/v17k/
 !output/v17l/
+!output/v17m/
+!output/v17n/
+!output/v17o/
+!output/v18/
+!output/v19/
 !output/v15/
 !output/brown_subset/
 
@@ -50,6 +55,11 @@ output/v17i/*
 output/v17j/*
 output/v17k/*
 output/v17l/*
+output/v17m/*
+output/v17n/*
+output/v17o/*
+output/v18/*
+output/v19/*
 output/v15/*
 output/brown_subset/**
 
@@ -96,6 +106,23 @@ output/brown_subset/**
 !output/v17l/*.csv
 !output/v17l/*.png
 !output/v17l/*.md
+!output/v17m/*.json
+!output/v17m/*.csv
+!output/v17m/*.png
+!output/v17m/*.md
+!output/v17n/*.json
+!output/v17n/*.csv
+!output/v17n/*.md
+!output/v17o/*.json
+!output/v17o/*.csv
+!output/v17o/*.png
+!output/v17o/*.md
+!output/v18/*.json
+!output/v18/*.csv
+!output/v18/*.md
+!output/v19/*.json
+!output/v19/*.csv
+!output/v19/*.md
 !output/v15/*.json
 !output/v15/*.csv
 !output/v15/*.md
@@ -113,6 +140,18 @@ output/v17*/*_utterances.csv
 # ----------------------------------------------------------------------------
 diag_*.txt
 diagnostic_*.txt
+
+# ----------------------------------------------------------------------------
+#  Manuscript / SI drafts — keep PDFs out of the repo by default.
+#  Drafts are distributed out-of-band; only published versions belong on git.
+# ----------------------------------------------------------------------------
+*.pdf
+*.docx
+*.tex.aux
+*.tex.bbl
+*.tex.blg
+*.tex.log
+*.tex.out
 
 # ----------------------------------------------------------------------------
 #  Python environment / caches

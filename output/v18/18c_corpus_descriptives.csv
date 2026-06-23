@@ -1,0 +1,6 @@
+sub_corpus,n_children,age_range_included,median_obs_window_months,n_files,n_utterances,n_cue_episodes,median_sessions_per_child,caregiver_utterance_proportion
+Brown,3.0,24.0-62.4mo,33.82,214,164619,52814,55.0,0.3994
+Manchester,11.0,24.1-35.7mo,10.13,374,550887,147368,34.0,0.6229
+NA_other,1.0,25.0-35.0mo,10.0,6,5845,1176,6.0,0.5786
+UK_long_long,5.0,24.0-60.6mo,12.97,995,1887577,548051,184.0,0.5642
+UK_short_obs,12.0,24.0-59.7mo,17.69,112,188375,59649,9.0,0.37

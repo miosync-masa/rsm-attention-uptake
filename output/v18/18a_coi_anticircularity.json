@@ -1,0 +1,57 @@
+{
+  "English-Manchester": {
+    "n_cues": 143,
+    "r_5comp_vs_logfreq": 0.7907,
+    "r_4comp_vs_logfreq": 0.6224
+  },
+  "English-NA-Pool": {
+    "n_cues": 168,
+    "r_5comp_vs_logfreq": 0.7882,
+    "r_4comp_vs_logfreq": 0.6354
+  },
+  "English-Providence": {
+    "n_cues": 56,
+    "r_5comp_vs_logfreq": 0.8103,
+    "r_4comp_vs_logfreq": 0.5927
+  },
+  "English": {
+    "n_cues": 129,
+    "r_5comp_vs_logfreq": 0.7085,
+    "r_4comp_vs_logfreq": 0.4897
+  },
+  "Indonesian": {
+    "n_cues": 28,
+    "r_5comp_vs_logfreq": 0.8055,
+    "r_4comp_vs_logfreq": 0.6137
+  },
+  "Japanese": {
+    "n_cues": 74,
+    "r_5comp_vs_logfreq": 0.6076,
+    "r_4comp_vs_logfreq": 0.4897
+  },
+  "Korean": {
+    "n_cues": 7,
+    "r_5comp_vs_logfreq": 0.8727,
+    "r_4comp_vs_logfreq": 0.8321
+  },
+  "Mandarin": {
+    "n_cues": 11,
+    "r_5comp_vs_logfreq": 0.9063,
+    "r_4comp_vs_logfreq": 0.8443
+  },
+  "Russian": {
+    "n_cues": 12,
+    "r_5comp_vs_logfreq": 0.7249,
+    "r_4comp_vs_logfreq": 0.6078
+  },
+  "Spanish": {
+    "n_cues": 38,
+    "r_5comp_vs_logfreq": 0.486,
+    "r_4comp_vs_logfreq": 0.1629
+  },
+  "_pooled_within_language_z": {
+    "n_cues": 666,
+    "r_5comp_vs_logfreq": 0.7401,
+    "r_4comp_vs_logfreq": 0.5614
+  }
+}
