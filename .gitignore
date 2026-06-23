@@ -36,6 +36,7 @@ output/*
 !output/v17n/
 !output/v17o/
 !output/v18/
+!output/v19/
 !output/v15/
 !output/brown_subset/
 
@@ -58,6 +59,7 @@ output/v17m/*
 output/v17n/*
 output/v17o/*
 output/v18/*
+output/v19/*
 output/v15/*
 output/brown_subset/**
 
@@ -118,6 +120,9 @@ output/brown_subset/**
 !output/v18/*.json
 !output/v18/*.csv
 !output/v18/*.md
+!output/v19/*.json
+!output/v19/*.csv
+!output/v19/*.md
 !output/v15/*.json
 !output/v15/*.csv
 !output/v15/*.md
@@ -135,6 +140,18 @@ output/v17*/*_utterances.csv
 # ----------------------------------------------------------------------------
 diag_*.txt
 diagnostic_*.txt
+
+# ----------------------------------------------------------------------------
+#  Manuscript / SI drafts — keep PDFs out of the repo by default.
+#  Drafts are distributed out-of-band; only published versions belong on git.
+# ----------------------------------------------------------------------------
+*.pdf
+*.docx
+*.tex.aux
+*.tex.bbl
+*.tex.blg
+*.tex.log
+*.tex.out
 
 # ----------------------------------------------------------------------------
 #  Python environment / caches
